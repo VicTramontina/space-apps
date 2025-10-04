@@ -1,0 +1,24 @@
+# Dependências principais
+geopandas>=0.14.0
+pandas>=2.0.0
+numpy>=1.24.0
+requests>=2.31.0
+
+# Processamento geoespacial
+shapely>=2.0.0
+fiona>=1.9.0
+pyproj>=3.6.0
+
+# KML/KMZ parsing
+fastkml>=0.12
+
+# Visualização
+matplotlib>=3.7.0
+seaborn>=0.12.0
+folium>=0.14.0
+
+# Configuração
+python-dotenv>=1.0.0
+
+# Opcional: para melhor performance
+rtree>=1.0.0  # Índices espaciais

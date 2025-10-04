@@ -1,0 +1,3156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_39fc0ecd3a3297e7c6d616210902d331 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+        <div style="position: fixed;
+                    bottom: 50px; right: 50px; width: 220px;
+                    background-color: white; z-index:9999;
+                    border:2px solid grey; border-radius: 5px;
+                    padding: 10px; font-family: Arial; font-size: 12px;">
+        <p style="margin-top:0; font-weight: bold; text-align: center;">
+            Classes LCZ
+        </p>
+        
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #696969;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>10:</b> Heavy industry...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #CD5C5C;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>2:</b> Compact midrise...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #F08080;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>3:</b> Compact low-ris...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #FF8C00;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>4:</b> Open high-rise...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #FFA500;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>5:</b> Open midrise...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #FFD700;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>6:</b> Open low-rise...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #A0522D;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>8:</b> Large low-rise...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #D2B48C;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>9:</b> Sparsely built...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #006400;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>A:</b> Dense trees...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #228B22;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>B:</b> Scattered trees...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #90EE90;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>D:</b> Low plants...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #808080;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>E:</b> Bare rock or pa...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #D2691E;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>F:</b> Bare soil or sa...
+                </p>
+                
+                <p style="margin: 5px 0;">
+                    <span style="background-color: #1E90FF;
+                                 border: 1px solid black;
+                                 display: inline-block;
+                                 width: 20px; height: 15px;
+                                 margin-right: 5px;">
+                    </span>
+                    <b>G:</b> Water...
+                </p>
+                </div>
+    
+            <div class="folium-map" id="map_39fc0ecd3a3297e7c6d616210902d331" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_39fc0ecd3a3297e7c6d616210902d331 = L.map(
+                "map_39fc0ecd3a3297e7c6d616210902d331",
+                {
+                    center: [-29.450421856049022, -51.97818302760802],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_08ef01cf7f6059621121d5d94503bb9a = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_08ef01cf7f6059621121d5d94503bb9a.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+            var tile_layer_c9da1ee5d63b72efa606c65614bbce74 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c9da1ee5d63b72efa606c65614bbce74.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+            var tile_layer_1c9512da37af375c2a33ad1031d66557 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_1c9512da37af375c2a33ad1031d66557.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_f349b6025d0cfba9e0464f0bd5ea24aa_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#CD5C5C", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_f349b6025d0cfba9e0464f0bd5ea24aa_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_f349b6025d0cfba9e0464f0bd5ea24aa = L.geoJson(null, {
+                onEachFeature: geo_json_f349b6025d0cfba9e0464f0bd5ea24aa_onEachFeature,
+            
+                style: geo_json_f349b6025d0cfba9e0464f0bd5ea24aa_styler,
+            ...{
+}
+        });
+
+        function geo_json_f349b6025d0cfba9e0464f0bd5ea24aa_add (data) {
+            geo_json_f349b6025d0cfba9e0464f0bd5ea24aa
+                .addData(data);
+        }
+            geo_json_f349b6025d0cfba9e0464f0bd5ea24aa_add({"features": [{"geometry": {"coordinates": [[[-51.97097312673866, -29.45740407262809, 0.0], [-51.96769490135428, -29.45782700687059, 0.0], [-51.96730544347642, -29.45406284536907, 0.0], [-51.97089975157792, -29.45366509788061, 0.0], [-51.97097312673866, -29.45740407262809, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_f349b6025d0cfba9e0464f0bd5ea24aa.bindTooltip(
+                `<div>
+                     LCZ 2: Compact midrise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_9d6133cb3d3053c944bea8d628d69ed7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cb99634bed91d78b57cb837e1f57c6fc = $(`<div id="html_cb99634bed91d78b57cb837e1f57c6fc" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 2</h4>                 <p><b>Descrição:</b> Compact midrise</p>                 <p><b>Área:</b> 0.185 km²</p>                              <p><b>Temperatura Média:</b> 31.6°C</p>                 <p><b>Pontos Medidos:</b> 5</p>                 </div></div>`)[0];
+                popup_9d6133cb3d3053c944bea8d628d69ed7.setContent(html_cb99634bed91d78b57cb837e1f57c6fc);
+            
+        
+
+        geo_json_f349b6025d0cfba9e0464f0bd5ea24aa.bindPopup(popup_9d6133cb3d3053c944bea8d628d69ed7)
+        ;
+
+        
+    
+    
+            geo_json_f349b6025d0cfba9e0464f0bd5ea24aa.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_f5a7c9190338903a7eb73424b3a1e459_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#CD5C5C", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_f5a7c9190338903a7eb73424b3a1e459_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_f5a7c9190338903a7eb73424b3a1e459 = L.geoJson(null, {
+                onEachFeature: geo_json_f5a7c9190338903a7eb73424b3a1e459_onEachFeature,
+            
+                style: geo_json_f5a7c9190338903a7eb73424b3a1e459_styler,
+            ...{
+}
+        });
+
+        function geo_json_f5a7c9190338903a7eb73424b3a1e459_add (data) {
+            geo_json_f5a7c9190338903a7eb73424b3a1e459
+                .addData(data);
+        }
+            geo_json_f5a7c9190338903a7eb73424b3a1e459_add({"features": [{"geometry": {"coordinates": [[[-51.96818639208893, -29.44509556117672, 0.0], [-51.96850848542976, -29.44555828378675, 0.0], [-51.96785573547784, -29.4458054950276, 0.0], [-51.96758899872565, -29.44537591224865, 0.0], [-51.96818639208893, -29.44509556117672, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_f5a7c9190338903a7eb73424b3a1e459.bindTooltip(
+                `<div>
+                     LCZ 2: Compact midrise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_e9d4649c34ad4c60ab8976993ac6c4c8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2a721542576eb2a77e6499fa8a16e146 = $(`<div id="html_2a721542576eb2a77e6499fa8a16e146" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 2</h4>                 <p><b>Descrição:</b> Compact midrise</p>                 <p><b>Área:</b> 0.005 km²</p>                              <p><b>Temperatura Média:</b> 31.6°C</p>                 <p><b>Pontos Medidos:</b> 5</p>                 </div></div>`)[0];
+                popup_e9d4649c34ad4c60ab8976993ac6c4c8.setContent(html_2a721542576eb2a77e6499fa8a16e146);
+            
+        
+
+        geo_json_f5a7c9190338903a7eb73424b3a1e459.bindPopup(popup_e9d4649c34ad4c60ab8976993ac6c4c8)
+        ;
+
+        
+    
+    
+            geo_json_f5a7c9190338903a7eb73424b3a1e459.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_a1d7244cb6731e9f08a3be88f7c6782e_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#CD5C5C", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_a1d7244cb6731e9f08a3be88f7c6782e_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_a1d7244cb6731e9f08a3be88f7c6782e = L.geoJson(null, {
+                onEachFeature: geo_json_a1d7244cb6731e9f08a3be88f7c6782e_onEachFeature,
+            
+                style: geo_json_a1d7244cb6731e9f08a3be88f7c6782e_styler,
+            ...{
+}
+        });
+
+        function geo_json_a1d7244cb6731e9f08a3be88f7c6782e_add (data) {
+            geo_json_a1d7244cb6731e9f08a3be88f7c6782e
+                .addData(data);
+        }
+            geo_json_a1d7244cb6731e9f08a3be88f7c6782e_add({"features": [{"geometry": {"coordinates": [[[-51.97392180716719, -29.45593994287357, 0.0], [-51.97401989468005, -29.45651846282322, 0.0], [-51.97368835816435, -29.45654104546114, 0.0], [-51.97370277344279, -29.45731861996832, 0.0], [-51.97298781690561, -29.45741134849445, 0.0], [-51.97280404492322, -29.45722388574648, 0.0], [-51.97231983870044, -29.45698855745434, 0.0], [-51.97216233275836, -29.45717330703963, 0.0], [-51.9717545354569, -29.45705547886769, 0.0], [-51.97190180136501, -29.45667953321605, 0.0], [-51.97219406214175, -29.45678846482628, 0.0], [-51.97266721742659, -29.45601402386773, 0.0], [-51.9734476476205, -29.45614375359022, 0.0], [-51.97392180716719, -29.45593994287357, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_a1d7244cb6731e9f08a3be88f7c6782e.bindTooltip(
+                `<div>
+                     LCZ 2: Compact midrise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_7c43b81e711b2d089e3968979794d620 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ec4e8315c259560329c490e13f61a386 = $(`<div id="html_ec4e8315c259560329c490e13f61a386" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 2</h4>                 <p><b>Descrição:</b> Compact midrise</p>                 <p><b>Área:</b> 0.027 km²</p>                              <p><b>Temperatura Média:</b> 31.6°C</p>                 <p><b>Pontos Medidos:</b> 5</p>                 </div></div>`)[0];
+                popup_7c43b81e711b2d089e3968979794d620.setContent(html_ec4e8315c259560329c490e13f61a386);
+            
+        
+
+        geo_json_a1d7244cb6731e9f08a3be88f7c6782e.bindPopup(popup_7c43b81e711b2d089e3968979794d620)
+        ;
+
+        
+    
+    
+            geo_json_a1d7244cb6731e9f08a3be88f7c6782e.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_3d987faed5f83d880cdfb074d9dbdeb1_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#F08080", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_3d987faed5f83d880cdfb074d9dbdeb1_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_3d987faed5f83d880cdfb074d9dbdeb1 = L.geoJson(null, {
+                onEachFeature: geo_json_3d987faed5f83d880cdfb074d9dbdeb1_onEachFeature,
+            
+                style: geo_json_3d987faed5f83d880cdfb074d9dbdeb1_styler,
+            ...{
+}
+        });
+
+        function geo_json_3d987faed5f83d880cdfb074d9dbdeb1_add (data) {
+            geo_json_3d987faed5f83d880cdfb074d9dbdeb1
+                .addData(data);
+        }
+            geo_json_3d987faed5f83d880cdfb074d9dbdeb1_add({"features": [{"geometry": {"coordinates": [[[-52.02550519334481, -29.43496392251694, 0.0], [-52.02669084219298, -29.4348289411282, 0.0], [-52.02678805805711, -29.43540417323753, 0.0], [-52.02560974372987, -29.43557319743086, 0.0], [-52.02550519334481, -29.43496392251694, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_3d987faed5f83d880cdfb074d9dbdeb1.bindTooltip(
+                `<div>
+                     LCZ 3: Compact low-rise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_75f038cb01711efab1914fc1832ffabb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_215802711c5c381f6cf739d062c6b16d = $(`<div id="html_215802711c5c381f6cf739d062c6b16d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 3</h4>                 <p><b>Descrição:</b> Compact low-rise</p>                 <p><b>Área:</b> 0.010 km²</p>             </div></div>`)[0];
+                popup_75f038cb01711efab1914fc1832ffabb.setContent(html_215802711c5c381f6cf739d062c6b16d);
+            
+        
+
+        geo_json_3d987faed5f83d880cdfb074d9dbdeb1.bindPopup(popup_75f038cb01711efab1914fc1832ffabb)
+        ;
+
+        
+    
+    
+            geo_json_3d987faed5f83d880cdfb074d9dbdeb1.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_38b97ef3cd7b3f612135f5d4c0ba7182_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#F08080", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_38b97ef3cd7b3f612135f5d4c0ba7182_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_38b97ef3cd7b3f612135f5d4c0ba7182 = L.geoJson(null, {
+                onEachFeature: geo_json_38b97ef3cd7b3f612135f5d4c0ba7182_onEachFeature,
+            
+                style: geo_json_38b97ef3cd7b3f612135f5d4c0ba7182_styler,
+            ...{
+}
+        });
+
+        function geo_json_38b97ef3cd7b3f612135f5d4c0ba7182_add (data) {
+            geo_json_38b97ef3cd7b3f612135f5d4c0ba7182
+                .addData(data);
+        }
+            geo_json_38b97ef3cd7b3f612135f5d4c0ba7182_add({"features": [{"geometry": {"coordinates": [[[-52.02516435659211, -29.43122072181978, 0.0], [-52.0247669818774, -29.43129854895669, 0.0], [-52.02470928201938, -29.43116290921479, 0.0], [-52.02429837001661, -29.43119568358656, 0.0], [-52.02427946407428, -29.43099032869511, 0.0], [-52.02513742692464, -29.430928480709, 0.0], [-52.02516435659211, -29.43122072181978, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_38b97ef3cd7b3f612135f5d4c0ba7182.bindTooltip(
+                `<div>
+                     LCZ 3: Compact low-rise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_a163e8a08a1c6c2470a08d9a29741a82 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b4d37f0feb582bc50080dc8f6d597198 = $(`<div id="html_b4d37f0feb582bc50080dc8f6d597198" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 3</h4>                 <p><b>Descrição:</b> Compact low-rise</p>                 <p><b>Área:</b> 0.003 km²</p>             </div></div>`)[0];
+                popup_a163e8a08a1c6c2470a08d9a29741a82.setContent(html_b4d37f0feb582bc50080dc8f6d597198);
+            
+        
+
+        geo_json_38b97ef3cd7b3f612135f5d4c0ba7182.bindPopup(popup_a163e8a08a1c6c2470a08d9a29741a82)
+        ;
+
+        
+    
+    
+            geo_json_38b97ef3cd7b3f612135f5d4c0ba7182.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_3812849b9f9d80e1f4cda6c74d3491d0_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#F08080", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_3812849b9f9d80e1f4cda6c74d3491d0_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_3812849b9f9d80e1f4cda6c74d3491d0 = L.geoJson(null, {
+                onEachFeature: geo_json_3812849b9f9d80e1f4cda6c74d3491d0_onEachFeature,
+            
+                style: geo_json_3812849b9f9d80e1f4cda6c74d3491d0_styler,
+            ...{
+}
+        });
+
+        function geo_json_3812849b9f9d80e1f4cda6c74d3491d0_add (data) {
+            geo_json_3812849b9f9d80e1f4cda6c74d3491d0
+                .addData(data);
+        }
+            geo_json_3812849b9f9d80e1f4cda6c74d3491d0_add({"features": [{"geometry": {"coordinates": [[[-52.02434955303443, -29.43018198267037, 0.0], [-52.02436168114812, -29.43035413841784, 0.0], [-52.02294960524627, -29.43050179764222, 0.0], [-52.02293707447098, -29.43031424395989, 0.0], [-52.02434955303443, -29.43018198267037, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_3812849b9f9d80e1f4cda6c74d3491d0.bindTooltip(
+                `<div>
+                     LCZ 3: Compact low-rise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_b50beb579d0cd348f2c1fe155871bde3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3c2c314d91f0382ea1799f93ed1e13a9 = $(`<div id="html_3c2c314d91f0382ea1799f93ed1e13a9" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 3</h4>                 <p><b>Descrição:</b> Compact low-rise</p>                 <p><b>Área:</b> 0.004 km²</p>             </div></div>`)[0];
+                popup_b50beb579d0cd348f2c1fe155871bde3.setContent(html_3c2c314d91f0382ea1799f93ed1e13a9);
+            
+        
+
+        geo_json_3812849b9f9d80e1f4cda6c74d3491d0.bindPopup(popup_b50beb579d0cd348f2c1fe155871bde3)
+        ;
+
+        
+    
+    
+            geo_json_3812849b9f9d80e1f4cda6c74d3491d0.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_b05c287f62f24d19b251042b7b5b1a74_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#FF8C00", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_b05c287f62f24d19b251042b7b5b1a74_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_b05c287f62f24d19b251042b7b5b1a74 = L.geoJson(null, {
+                onEachFeature: geo_json_b05c287f62f24d19b251042b7b5b1a74_onEachFeature,
+            
+                style: geo_json_b05c287f62f24d19b251042b7b5b1a74_styler,
+            ...{
+}
+        });
+
+        function geo_json_b05c287f62f24d19b251042b7b5b1a74_add (data) {
+            geo_json_b05c287f62f24d19b251042b7b5b1a74
+                .addData(data);
+        }
+            geo_json_b05c287f62f24d19b251042b7b5b1a74_add({"features": [{"geometry": {"coordinates": [[[-51.97494000936909, -29.46146812620518, 0.0], [-51.97514888093341, -29.46297088075527, 0.0], [-51.97444743409664, -29.46301353304277, 0.0], [-51.9743058086106, -29.46147639015875, 0.0], [-51.97494000936909, -29.46146812620518, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_b05c287f62f24d19b251042b7b5b1a74.bindTooltip(
+                `<div>
+                     LCZ 4: Open high-rise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_ebbfd62480e830321c6f4adeb9489784 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9a578289e2dfe88df59a337ec5b80bf7 = $(`<div id="html_9a578289e2dfe88df59a337ec5b80bf7" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 4</h4>                 <p><b>Descrição:</b> Open high-rise</p>                 <p><b>Área:</b> 0.015 km²</p>                              <p><b>Temperatura Média:</b> 30.9°C</p>                 <p><b>Pontos Medidos:</b> 4</p>                 </div></div>`)[0];
+                popup_ebbfd62480e830321c6f4adeb9489784.setContent(html_9a578289e2dfe88df59a337ec5b80bf7);
+            
+        
+
+        geo_json_b05c287f62f24d19b251042b7b5b1a74.bindPopup(popup_ebbfd62480e830321c6f4adeb9489784)
+        ;
+
+        
+    
+    
+            geo_json_b05c287f62f24d19b251042b7b5b1a74.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_bfbef688d94b360c2ea60e8ad7ca877e_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#FF8C00", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_bfbef688d94b360c2ea60e8ad7ca877e_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_bfbef688d94b360c2ea60e8ad7ca877e = L.geoJson(null, {
+                onEachFeature: geo_json_bfbef688d94b360c2ea60e8ad7ca877e_onEachFeature,
+            
+                style: geo_json_bfbef688d94b360c2ea60e8ad7ca877e_styler,
+            ...{
+}
+        });
+
+        function geo_json_bfbef688d94b360c2ea60e8ad7ca877e_add (data) {
+            geo_json_bfbef688d94b360c2ea60e8ad7ca877e
+                .addData(data);
+        }
+            geo_json_bfbef688d94b360c2ea60e8ad7ca877e_add({"features": [{"geometry": {"coordinates": [[[-51.97679238304332, -29.4637840390927, 0.0], [-51.97532056024875, -29.46391836239131, 0.0], [-51.97524412124855, -29.46320182649334, 0.0], [-51.97634107184894, -29.46307062028357, 0.0], [-51.97636234332988, -29.46342432176154, 0.0], [-51.9767488544305, -29.46340438284947, 0.0], [-51.97679238304332, -29.4637840390927, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_bfbef688d94b360c2ea60e8ad7ca877e.bindTooltip(
+                `<div>
+                     LCZ 4: Open high-rise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_c6c9688cae665ddf9ca528d7a2391614 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d08018d423061292e85f3e1a167bca28 = $(`<div id="html_d08018d423061292e85f3e1a167bca28" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 4</h4>                 <p><b>Descrição:</b> Open high-rise</p>                 <p><b>Área:</b> 0.014 km²</p>                              <p><b>Temperatura Média:</b> 30.9°C</p>                 <p><b>Pontos Medidos:</b> 4</p>                 </div></div>`)[0];
+                popup_c6c9688cae665ddf9ca528d7a2391614.setContent(html_d08018d423061292e85f3e1a167bca28);
+            
+        
+
+        geo_json_bfbef688d94b360c2ea60e8ad7ca877e.bindPopup(popup_c6c9688cae665ddf9ca528d7a2391614)
+        ;
+
+        
+    
+    
+            geo_json_bfbef688d94b360c2ea60e8ad7ca877e.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_7947857d0725f801a540e1c42221f299_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#FF8C00", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_7947857d0725f801a540e1c42221f299_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_7947857d0725f801a540e1c42221f299 = L.geoJson(null, {
+                onEachFeature: geo_json_7947857d0725f801a540e1c42221f299_onEachFeature,
+            
+                style: geo_json_7947857d0725f801a540e1c42221f299_styler,
+            ...{
+}
+        });
+
+        function geo_json_7947857d0725f801a540e1c42221f299_add (data) {
+            geo_json_7947857d0725f801a540e1c42221f299
+                .addData(data);
+        }
+            geo_json_7947857d0725f801a540e1c42221f299_add({"features": [{"geometry": {"coordinates": [[[-51.97604709071088, -29.46399202544157, 0.0], [-51.97606929042258, -29.4645703527241, 0.0], [-51.9754467025759, -29.46470640219849, 0.0], [-51.97537654278886, -29.4639920274414, 0.0], [-51.97604709071088, -29.46399202544157, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_7947857d0725f801a540e1c42221f299.bindTooltip(
+                `<div>
+                     LCZ 4: Open high-rise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_df88fb37d367ce6b0c0e0f946b3aaf10 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_58e41b9ad6e0850be65157d4575bcb98 = $(`<div id="html_58e41b9ad6e0850be65157d4575bcb98" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 4</h4>                 <p><b>Descrição:</b> Open high-rise</p>                 <p><b>Área:</b> 0.006 km²</p>                              <p><b>Temperatura Média:</b> 30.9°C</p>                 <p><b>Pontos Medidos:</b> 4</p>                 </div></div>`)[0];
+                popup_df88fb37d367ce6b0c0e0f946b3aaf10.setContent(html_58e41b9ad6e0850be65157d4575bcb98);
+            
+        
+
+        geo_json_7947857d0725f801a540e1c42221f299.bindPopup(popup_df88fb37d367ce6b0c0e0f946b3aaf10)
+        ;
+
+        
+    
+    
+            geo_json_7947857d0725f801a540e1c42221f299.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_d63f9a5203f2d49f82ae77d686c34494_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#FFA500", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_d63f9a5203f2d49f82ae77d686c34494_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_d63f9a5203f2d49f82ae77d686c34494 = L.geoJson(null, {
+                onEachFeature: geo_json_d63f9a5203f2d49f82ae77d686c34494_onEachFeature,
+            
+                style: geo_json_d63f9a5203f2d49f82ae77d686c34494_styler,
+            ...{
+}
+        });
+
+        function geo_json_d63f9a5203f2d49f82ae77d686c34494_add (data) {
+            geo_json_d63f9a5203f2d49f82ae77d686c34494
+                .addData(data);
+        }
+            geo_json_d63f9a5203f2d49f82ae77d686c34494_add({"features": [{"geometry": {"coordinates": [[[-51.96618014353538, -29.46410259207933, 0.0], [-51.96494810027276, -29.46367989674746, 0.0], [-51.96516546338236, -29.46309163716613, 0.0], [-51.96645354431075, -29.4635214936679, 0.0], [-51.96618014353538, -29.46410259207933, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_d63f9a5203f2d49f82ae77d686c34494.bindTooltip(
+                `<div>
+                     LCZ 5: Open midrise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_a454f5342489d819ba8a9b6d12d55997 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fbe9ba038176be5e406859951beefa34 = $(`<div id="html_fbe9ba038176be5e406859951beefa34" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 5</h4>                 <p><b>Descrição:</b> Open midrise</p>                 <p><b>Área:</b> 0.012 km²</p>                              <p><b>Temperatura Média:</b> 30.3°C</p>                 <p><b>Pontos Medidos:</b> 2</p>                 </div></div>`)[0];
+                popup_a454f5342489d819ba8a9b6d12d55997.setContent(html_fbe9ba038176be5e406859951beefa34);
+            
+        
+
+        geo_json_d63f9a5203f2d49f82ae77d686c34494.bindPopup(popup_a454f5342489d819ba8a9b6d12d55997)
+        ;
+
+        
+    
+    
+            geo_json_d63f9a5203f2d49f82ae77d686c34494.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_0d224137d0e89753b66e395f0cf4860a_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#FFA500", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_0d224137d0e89753b66e395f0cf4860a_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_0d224137d0e89753b66e395f0cf4860a = L.geoJson(null, {
+                onEachFeature: geo_json_0d224137d0e89753b66e395f0cf4860a_onEachFeature,
+            
+                style: geo_json_0d224137d0e89753b66e395f0cf4860a_styler,
+            ...{
+}
+        });
+
+        function geo_json_0d224137d0e89753b66e395f0cf4860a_add (data) {
+            geo_json_0d224137d0e89753b66e395f0cf4860a
+                .addData(data);
+        }
+            geo_json_0d224137d0e89753b66e395f0cf4860a_add({"features": [{"geometry": {"coordinates": [[[-51.96495712330805, -29.46684185282093, 0.0], [-51.9637348152806, -29.46643837657955, 0.0], [-51.96399336481224, -29.4658547372354, 0.0], [-51.96518487205846, -29.46624513987154, 0.0], [-51.96495712330805, -29.46684185282093, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_0d224137d0e89753b66e395f0cf4860a.bindTooltip(
+                `<div>
+                     LCZ 5: Open midrise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_7097f4ebf99ce5edc41b2a7af3dbfe97 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_816cc9dce8d66574c21fc587adbc09e3 = $(`<div id="html_816cc9dce8d66574c21fc587adbc09e3" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 5</h4>                 <p><b>Descrição:</b> Open midrise</p>                 <p><b>Área:</b> 0.012 km²</p>                              <p><b>Temperatura Média:</b> 30.3°C</p>                 <p><b>Pontos Medidos:</b> 2</p>                 </div></div>`)[0];
+                popup_7097f4ebf99ce5edc41b2a7af3dbfe97.setContent(html_816cc9dce8d66574c21fc587adbc09e3);
+            
+        
+
+        geo_json_0d224137d0e89753b66e395f0cf4860a.bindPopup(popup_7097f4ebf99ce5edc41b2a7af3dbfe97)
+        ;
+
+        
+    
+    
+            geo_json_0d224137d0e89753b66e395f0cf4860a.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_bf3c116939437c39e5f2cf549acf3fcb_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#FFA500", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_bf3c116939437c39e5f2cf549acf3fcb_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_bf3c116939437c39e5f2cf549acf3fcb = L.geoJson(null, {
+                onEachFeature: geo_json_bf3c116939437c39e5f2cf549acf3fcb_onEachFeature,
+            
+                style: geo_json_bf3c116939437c39e5f2cf549acf3fcb_styler,
+            ...{
+}
+        });
+
+        function geo_json_bf3c116939437c39e5f2cf549acf3fcb_add (data) {
+            geo_json_bf3c116939437c39e5f2cf549acf3fcb
+                .addData(data);
+        }
+            geo_json_bf3c116939437c39e5f2cf549acf3fcb_add({"features": [{"geometry": {"coordinates": [[[-51.96575713728721, -29.46901777716009, 0.0], [-51.96434767893189, -29.46862303706596, 0.0], [-51.96479703569723, -29.4678191680386, 0.0], [-51.96606113140535, -29.4683623097002, 0.0], [-51.96575713728721, -29.46901777716009, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_bf3c116939437c39e5f2cf549acf3fcb.bindTooltip(
+                `<div>
+                     LCZ 5: Open midrise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_e8416d9e5fb1f5d91c3efb2253d9ecfa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_77289ac47b478547764ba5c9bd9de1a0 = $(`<div id="html_77289ac47b478547764ba5c9bd9de1a0" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 5</h4>                 <p><b>Descrição:</b> Open midrise</p>                 <p><b>Área:</b> 0.016 km²</p>                              <p><b>Temperatura Média:</b> 30.3°C</p>                 <p><b>Pontos Medidos:</b> 2</p>                 </div></div>`)[0];
+                popup_e8416d9e5fb1f5d91c3efb2253d9ecfa.setContent(html_77289ac47b478547764ba5c9bd9de1a0);
+            
+        
+
+        geo_json_bf3c116939437c39e5f2cf549acf3fcb.bindPopup(popup_e8416d9e5fb1f5d91c3efb2253d9ecfa)
+        ;
+
+        
+    
+    
+            geo_json_bf3c116939437c39e5f2cf549acf3fcb.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_e4f9e02f63d52721098ce8c37b5f26c7_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#FFD700", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_e4f9e02f63d52721098ce8c37b5f26c7_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_e4f9e02f63d52721098ce8c37b5f26c7 = L.geoJson(null, {
+                onEachFeature: geo_json_e4f9e02f63d52721098ce8c37b5f26c7_onEachFeature,
+            
+                style: geo_json_e4f9e02f63d52721098ce8c37b5f26c7_styler,
+            ...{
+}
+        });
+
+        function geo_json_e4f9e02f63d52721098ce8c37b5f26c7_add (data) {
+            geo_json_e4f9e02f63d52721098ce8c37b5f26c7
+                .addData(data);
+        }
+            geo_json_e4f9e02f63d52721098ce8c37b5f26c7_add({"features": [{"geometry": {"coordinates": [[[-51.99060500984042, -29.44815698960461, 0.0], [-51.98954098132248, -29.44826003324906, 0.0], [-51.98915609396032, -29.44535774179013, 0.0], [-51.99017822799757, -29.44527305031098, 0.0], [-51.99060500984042, -29.44815698960461, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_e4f9e02f63d52721098ce8c37b5f26c7.bindTooltip(
+                `<div>
+                     LCZ 6: Open low-rise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_a64d3f069967fdae6d3534aae71de45b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_07e36f2df8ec16eab2da23fa30d50f20 = $(`<div id="html_07e36f2df8ec16eab2da23fa30d50f20" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 6</h4>                 <p><b>Descrição:</b> Open low-rise</p>                 <p><b>Área:</b> 0.043 km²</p>                              <p><b>Temperatura Média:</b> 29.2°C</p>                 <p><b>Pontos Medidos:</b> 5</p>                 </div></div>`)[0];
+                popup_a64d3f069967fdae6d3534aae71de45b.setContent(html_07e36f2df8ec16eab2da23fa30d50f20);
+            
+        
+
+        geo_json_e4f9e02f63d52721098ce8c37b5f26c7.bindPopup(popup_a64d3f069967fdae6d3534aae71de45b)
+        ;
+
+        
+    
+    
+            geo_json_e4f9e02f63d52721098ce8c37b5f26c7.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_ec8e2984dd19a0a33228668393c5bab1_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#FFD700", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_ec8e2984dd19a0a33228668393c5bab1_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_ec8e2984dd19a0a33228668393c5bab1 = L.geoJson(null, {
+                onEachFeature: geo_json_ec8e2984dd19a0a33228668393c5bab1_onEachFeature,
+            
+                style: geo_json_ec8e2984dd19a0a33228668393c5bab1_styler,
+            ...{
+}
+        });
+
+        function geo_json_ec8e2984dd19a0a33228668393c5bab1_add (data) {
+            geo_json_ec8e2984dd19a0a33228668393c5bab1
+                .addData(data);
+        }
+            geo_json_ec8e2984dd19a0a33228668393c5bab1_add({"features": [{"geometry": {"coordinates": [[[-51.98858007613342, -29.45359446001504, 0.0], [-51.98695488380729, -29.45378729468503, 0.0], [-51.98688395832376, -29.45326257999927, 0.0], [-51.98849553214731, -29.45307435472883, 0.0], [-51.98858007613342, -29.45359446001504, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_ec8e2984dd19a0a33228668393c5bab1.bindTooltip(
+                `<div>
+                     LCZ 6: Open low-rise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_99429dfd8f9cb984f6863ec3819287d9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f7e75caad4ec69207b6f4e13ca82600a = $(`<div id="html_f7e75caad4ec69207b6f4e13ca82600a" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 6</h4>                 <p><b>Descrição:</b> Open low-rise</p>                 <p><b>Área:</b> 0.012 km²</p>                              <p><b>Temperatura Média:</b> 29.2°C</p>                 <p><b>Pontos Medidos:</b> 5</p>                 </div></div>`)[0];
+                popup_99429dfd8f9cb984f6863ec3819287d9.setContent(html_f7e75caad4ec69207b6f4e13ca82600a);
+            
+        
+
+        geo_json_ec8e2984dd19a0a33228668393c5bab1.bindPopup(popup_99429dfd8f9cb984f6863ec3819287d9)
+        ;
+
+        
+    
+    
+            geo_json_ec8e2984dd19a0a33228668393c5bab1.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_478a8194a71fea4929bd783cd784120d_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#FFD700", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_478a8194a71fea4929bd783cd784120d_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_478a8194a71fea4929bd783cd784120d = L.geoJson(null, {
+                onEachFeature: geo_json_478a8194a71fea4929bd783cd784120d_onEachFeature,
+            
+                style: geo_json_478a8194a71fea4929bd783cd784120d_styler,
+            ...{
+}
+        });
+
+        function geo_json_478a8194a71fea4929bd783cd784120d_add (data) {
+            geo_json_478a8194a71fea4929bd783cd784120d
+                .addData(data);
+        }
+            geo_json_478a8194a71fea4929bd783cd784120d_add({"features": [{"geometry": {"coordinates": [[[-51.98881486347057, -29.45495843541556, 0.0], [-51.98718094977242, -29.4551469879228, 0.0], [-51.98708231013594, -29.45460874200522, 0.0], [-51.98874626124201, -29.45437822836988, 0.0], [-51.98881486347057, -29.45495843541556, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_478a8194a71fea4929bd783cd784120d.bindTooltip(
+                `<div>
+                     LCZ 6: Open low-rise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_245a4d1d4c9c31026ad867deeacfe439 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4adb86295c9ca7f06d168291f18e9552 = $(`<div id="html_4adb86295c9ca7f06d168291f18e9552" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 6</h4>                 <p><b>Descrição:</b> Open low-rise</p>                 <p><b>Área:</b> 0.013 km²</p>                              <p><b>Temperatura Média:</b> 29.2°C</p>                 <p><b>Pontos Medidos:</b> 5</p>                 </div></div>`)[0];
+                popup_245a4d1d4c9c31026ad867deeacfe439.setContent(html_4adb86295c9ca7f06d168291f18e9552);
+            
+        
+
+        geo_json_478a8194a71fea4929bd783cd784120d.bindPopup(popup_245a4d1d4c9c31026ad867deeacfe439)
+        ;
+
+        
+    
+    
+            geo_json_478a8194a71fea4929bd783cd784120d.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_df39bdba6148aa7c23c92a833d8ea89f_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#A0522D", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_df39bdba6148aa7c23c92a833d8ea89f_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_df39bdba6148aa7c23c92a833d8ea89f = L.geoJson(null, {
+                onEachFeature: geo_json_df39bdba6148aa7c23c92a833d8ea89f_onEachFeature,
+            
+                style: geo_json_df39bdba6148aa7c23c92a833d8ea89f_styler,
+            ...{
+}
+        });
+
+        function geo_json_df39bdba6148aa7c23c92a833d8ea89f_add (data) {
+            geo_json_df39bdba6148aa7c23c92a833d8ea89f
+                .addData(data);
+        }
+            geo_json_df39bdba6148aa7c23c92a833d8ea89f_add({"features": [{"geometry": {"coordinates": [[[-51.9864751413603, -29.45899191531288, 0.0], [-51.98689624591626, -29.4617941512439, 0.0], [-51.98524776783114, -29.46199574328668, 0.0], [-51.9849154617263, -29.45914977949749, 0.0], [-51.9864751413603, -29.45899191531288, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_df39bdba6148aa7c23c92a833d8ea89f.bindTooltip(
+                `<div>
+                     LCZ 8: Large low-rise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_66de95e10423183cc8fb88ccc6779917 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_32f76848ca47ffe5dadd4210b997d680 = $(`<div id="html_32f76848ca47ffe5dadd4210b997d680" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 8</h4>                 <p><b>Descrição:</b> Large low-rise</p>                 <p><b>Área:</b> 0.065 km²</p>                              <p><b>Temperatura Média:</b> 30.2°C</p>                 <p><b>Pontos Medidos:</b> 6</p>                 </div></div>`)[0];
+                popup_66de95e10423183cc8fb88ccc6779917.setContent(html_32f76848ca47ffe5dadd4210b997d680);
+            
+        
+
+        geo_json_df39bdba6148aa7c23c92a833d8ea89f.bindPopup(popup_66de95e10423183cc8fb88ccc6779917)
+        ;
+
+        
+    
+    
+            geo_json_df39bdba6148aa7c23c92a833d8ea89f.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_61c551fe91c1cad127f6d280c92e98d9_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#A0522D", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_61c551fe91c1cad127f6d280c92e98d9_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_61c551fe91c1cad127f6d280c92e98d9 = L.geoJson(null, {
+                onEachFeature: geo_json_61c551fe91c1cad127f6d280c92e98d9_onEachFeature,
+            
+                style: geo_json_61c551fe91c1cad127f6d280c92e98d9_styler,
+            ...{
+}
+        });
+
+        function geo_json_61c551fe91c1cad127f6d280c92e98d9_add (data) {
+            geo_json_61c551fe91c1cad127f6d280c92e98d9
+                .addData(data);
+        }
+            geo_json_61c551fe91c1cad127f6d280c92e98d9_add({"features": [{"geometry": {"coordinates": [[[-51.9808426326646, -29.45306529102537, 0.0], [-51.98178433354381, -29.45396515141557, 0.0], [-51.98190707269789, -29.45549340243541, 0.0], [-51.98016743072558, -29.45558174517156, 0.0], [-51.97973826898048, -29.45373496335901, 0.0], [-51.9808426326646, -29.45306529102537, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_61c551fe91c1cad127f6d280c92e98d9.bindTooltip(
+                `<div>
+                     LCZ 8: Large low-rise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_99651db5ed0b169b143e90cb5742d8b3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b41ac6c3736798d97f5f117b24d905bf = $(`<div id="html_b41ac6c3736798d97f5f117b24d905bf" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 8</h4>                 <p><b>Descrição:</b> Large low-rise</p>                 <p><b>Área:</b> 0.057 km²</p>                              <p><b>Temperatura Média:</b> 30.2°C</p>                 <p><b>Pontos Medidos:</b> 6</p>                 </div></div>`)[0];
+                popup_99651db5ed0b169b143e90cb5742d8b3.setContent(html_b41ac6c3736798d97f5f117b24d905bf);
+            
+        
+
+        geo_json_61c551fe91c1cad127f6d280c92e98d9.bindPopup(popup_99651db5ed0b169b143e90cb5742d8b3)
+        ;
+
+        
+    
+    
+            geo_json_61c551fe91c1cad127f6d280c92e98d9.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_b9b302291373e1dbe682fa20908fb745_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#A0522D", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_b9b302291373e1dbe682fa20908fb745_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_b9b302291373e1dbe682fa20908fb745 = L.geoJson(null, {
+                onEachFeature: geo_json_b9b302291373e1dbe682fa20908fb745_onEachFeature,
+            
+                style: geo_json_b9b302291373e1dbe682fa20908fb745_styler,
+            ...{
+}
+        });
+
+        function geo_json_b9b302291373e1dbe682fa20908fb745_add (data) {
+            geo_json_b9b302291373e1dbe682fa20908fb745
+                .addData(data);
+        }
+            geo_json_b9b302291373e1dbe682fa20908fb745_add({"features": [{"geometry": {"coordinates": [[[-51.96838197761089, -29.45035150563443, 0.0], [-51.96727512077315, -29.45082976132065, 0.0], [-51.9679059906284, -29.44910155631396, 0.0], [-51.96878241454809, -29.44854419262543, 0.0], [-51.97000037602377, -29.44894736330518, 0.0], [-51.96838197761089, -29.45035150563443, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_b9b302291373e1dbe682fa20908fb745.bindTooltip(
+                `<div>
+                     LCZ 8: Large low-rise
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_107f3592635a5a2bb66be24e3591a3f1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_57ef7806032e9f01c2502a2473c7b558 = $(`<div id="html_57ef7806032e9f01c2502a2473c7b558" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 8</h4>                 <p><b>Descrição:</b> Large low-rise</p>                 <p><b>Área:</b> 0.038 km²</p>                              <p><b>Temperatura Média:</b> 30.2°C</p>                 <p><b>Pontos Medidos:</b> 6</p>                 </div></div>`)[0];
+                popup_107f3592635a5a2bb66be24e3591a3f1.setContent(html_57ef7806032e9f01c2502a2473c7b558);
+            
+        
+
+        geo_json_b9b302291373e1dbe682fa20908fb745.bindPopup(popup_107f3592635a5a2bb66be24e3591a3f1)
+        ;
+
+        
+    
+    
+            geo_json_b9b302291373e1dbe682fa20908fb745.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_2cba7170ab471c50736cf75e42a4d912_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#D2B48C", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_2cba7170ab471c50736cf75e42a4d912_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_2cba7170ab471c50736cf75e42a4d912 = L.geoJson(null, {
+                onEachFeature: geo_json_2cba7170ab471c50736cf75e42a4d912_onEachFeature,
+            
+                style: geo_json_2cba7170ab471c50736cf75e42a4d912_styler,
+            ...{
+}
+        });
+
+        function geo_json_2cba7170ab471c50736cf75e42a4d912_add (data) {
+            geo_json_2cba7170ab471c50736cf75e42a4d912
+                .addData(data);
+        }
+            geo_json_2cba7170ab471c50736cf75e42a4d912_add({"features": [{"geometry": {"coordinates": [[[-51.98631130171692, -29.45047445254263, 0.0], [-51.98506992551243, -29.45060082564612, 0.0], [-51.98479724777815, -29.44830226349999, 0.0], [-51.98603566695947, -29.44818009527512, 0.0], [-51.98631130171692, -29.45047445254263, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_2cba7170ab471c50736cf75e42a4d912.bindTooltip(
+                `<div>
+                     LCZ 9: Sparsely built
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_d1eeaf343a7e5e71d886f8cdb3531428 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_53bbb469295c29796b4147c5c9a145e9 = $(`<div id="html_53bbb469295c29796b4147c5c9a145e9" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 9</h4>                 <p><b>Descrição:</b> Sparsely built</p>                 <p><b>Área:</b> 0.041 km²</p>                              <p><b>Temperatura Média:</b> 28.7°C</p>                 <p><b>Pontos Medidos:</b> 11</p>                 </div></div>`)[0];
+                popup_d1eeaf343a7e5e71d886f8cdb3531428.setContent(html_53bbb469295c29796b4147c5c9a145e9);
+            
+        
+
+        geo_json_2cba7170ab471c50736cf75e42a4d912.bindPopup(popup_d1eeaf343a7e5e71d886f8cdb3531428)
+        ;
+
+        
+    
+    
+            geo_json_2cba7170ab471c50736cf75e42a4d912.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_a1ffb6e8499b6b303f52812a16cc3f7a_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#D2B48C", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_a1ffb6e8499b6b303f52812a16cc3f7a_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_a1ffb6e8499b6b303f52812a16cc3f7a = L.geoJson(null, {
+                onEachFeature: geo_json_a1ffb6e8499b6b303f52812a16cc3f7a_onEachFeature,
+            
+                style: geo_json_a1ffb6e8499b6b303f52812a16cc3f7a_styler,
+            ...{
+}
+        });
+
+        function geo_json_a1ffb6e8499b6b303f52812a16cc3f7a_add (data) {
+            geo_json_a1ffb6e8499b6b303f52812a16cc3f7a
+                .addData(data);
+        }
+            geo_json_a1ffb6e8499b6b303f52812a16cc3f7a_add({"features": [{"geometry": {"coordinates": [[[-51.98316238075996, -29.44973193921423, 0.0], [-51.9821115798137, -29.44982502846775, 0.0], [-51.98170679046262, -29.44721662531053, 0.0], [-51.98274189538474, -29.44711921765363, 0.0], [-51.98316238075996, -29.44973193921423, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_a1ffb6e8499b6b303f52812a16cc3f7a.bindTooltip(
+                `<div>
+                     LCZ 9: Sparsely built
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_157356b79b216123b3a33f5f909dab4a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c8b550f92433dc3eb9c457a8b54e9d6d = $(`<div id="html_c8b550f92433dc3eb9c457a8b54e9d6d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 9</h4>                 <p><b>Descrição:</b> Sparsely built</p>                 <p><b>Área:</b> 0.039 km²</p>                              <p><b>Temperatura Média:</b> 28.7°C</p>                 <p><b>Pontos Medidos:</b> 11</p>                 </div></div>`)[0];
+                popup_157356b79b216123b3a33f5f909dab4a.setContent(html_c8b550f92433dc3eb9c457a8b54e9d6d);
+            
+        
+
+        geo_json_a1ffb6e8499b6b303f52812a16cc3f7a.bindPopup(popup_157356b79b216123b3a33f5f909dab4a)
+        ;
+
+        
+    
+    
+            geo_json_a1ffb6e8499b6b303f52812a16cc3f7a.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_55855518c28bb62b55de324216e0d2ee_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#D2B48C", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_55855518c28bb62b55de324216e0d2ee_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_55855518c28bb62b55de324216e0d2ee = L.geoJson(null, {
+                onEachFeature: geo_json_55855518c28bb62b55de324216e0d2ee_onEachFeature,
+            
+                style: geo_json_55855518c28bb62b55de324216e0d2ee_styler,
+            ...{
+}
+        });
+
+        function geo_json_55855518c28bb62b55de324216e0d2ee_add (data) {
+            geo_json_55855518c28bb62b55de324216e0d2ee
+                .addData(data);
+        }
+            geo_json_55855518c28bb62b55de324216e0d2ee_add({"features": [{"geometry": {"coordinates": [[[-51.9858902375678, -29.44740001629939, 0.0], [-51.98468410356939, -29.44753142296458, 0.0], [-51.98448773658987, -29.44562995828242, 0.0], [-51.98566339878366, -29.44551206202233, 0.0], [-51.9858902375678, -29.44740001629939, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_55855518c28bb62b55de324216e0d2ee.bindTooltip(
+                `<div>
+                     LCZ 9: Sparsely built
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_e436c2276a6d70a36f91c815feea82b1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4cb146003c1d5b05baf750b7b81230b0 = $(`<div id="html_4cb146003c1d5b05baf750b7b81230b0" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 9</h4>                 <p><b>Descrição:</b> Sparsely built</p>                 <p><b>Área:</b> 0.032 km²</p>                              <p><b>Temperatura Média:</b> 28.7°C</p>                 <p><b>Pontos Medidos:</b> 11</p>                 </div></div>`)[0];
+                popup_e436c2276a6d70a36f91c815feea82b1.setContent(html_4cb146003c1d5b05baf750b7b81230b0);
+            
+        
+
+        geo_json_55855518c28bb62b55de324216e0d2ee.bindPopup(popup_e436c2276a6d70a36f91c815feea82b1)
+        ;
+
+        
+    
+    
+            geo_json_55855518c28bb62b55de324216e0d2ee.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_8878b9b67c53975b8597a749add487aa_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#D2B48C", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_8878b9b67c53975b8597a749add487aa_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_8878b9b67c53975b8597a749add487aa = L.geoJson(null, {
+                onEachFeature: geo_json_8878b9b67c53975b8597a749add487aa_onEachFeature,
+            
+                style: geo_json_8878b9b67c53975b8597a749add487aa_styler,
+            ...{
+}
+        });
+
+        function geo_json_8878b9b67c53975b8597a749add487aa_add (data) {
+            geo_json_8878b9b67c53975b8597a749add487aa
+                .addData(data);
+        }
+            geo_json_8878b9b67c53975b8597a749add487aa_add({"features": [{"geometry": {"coordinates": [[[-51.94747834716445, -29.45632248617006, 0.0], [-51.94812155066232, -29.4574769652418, 0.0], [-51.94497385759913, -29.45900408404551, 0.0], [-51.94480050679037, -29.45806278330629, 0.0], [-51.94685950925217, -29.45708590766946, 0.0], [-51.94747834716445, -29.45632248617006, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_8878b9b67c53975b8597a749add487aa.bindTooltip(
+                `<div>
+                     LCZ 9: Sparsely built
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_3d0edd8dc69172a50433a219121d0b9d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a86841833d0ec119f05bc03f35c73bb3 = $(`<div id="html_a86841833d0ec119f05bc03f35c73bb3" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 9</h4>                 <p><b>Descrição:</b> Sparsely built</p>                 <p><b>Área:</b> 0.046 km²</p>                              <p><b>Temperatura Média:</b> 28.7°C</p>                 <p><b>Pontos Medidos:</b> 11</p>                 </div></div>`)[0];
+                popup_3d0edd8dc69172a50433a219121d0b9d.setContent(html_a86841833d0ec119f05bc03f35c73bb3);
+            
+        
+
+        geo_json_8878b9b67c53975b8597a749add487aa.bindPopup(popup_3d0edd8dc69172a50433a219121d0b9d)
+        ;
+
+        
+    
+    
+            geo_json_8878b9b67c53975b8597a749add487aa.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_b82882e55655389af71a9c08965ff26b_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#D2B48C", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_b82882e55655389af71a9c08965ff26b_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_b82882e55655389af71a9c08965ff26b = L.geoJson(null, {
+                onEachFeature: geo_json_b82882e55655389af71a9c08965ff26b_onEachFeature,
+            
+                style: geo_json_b82882e55655389af71a9c08965ff26b_styler,
+            ...{
+}
+        });
+
+        function geo_json_b82882e55655389af71a9c08965ff26b_add (data) {
+            geo_json_b82882e55655389af71a9c08965ff26b
+                .addData(data);
+        }
+            geo_json_b82882e55655389af71a9c08965ff26b_add({"features": [{"geometry": {"coordinates": [[[-51.94792687323489, -29.45850164795327, 0.0], [-51.94893803723264, -29.46012636891641, 0.0], [-51.94635253289866, -29.46136667731671, 0.0], [-51.94519625333584, -29.45968876194319, 0.0], [-51.94792687323489, -29.45850164795327, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_b82882e55655389af71a9c08965ff26b.bindTooltip(
+                `<div>
+                     LCZ 9: Sparsely built
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_d02d5d10948376e324c6f22bd8052d24 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c2f3bd1b57818aec9b6f2e8de6e30b36 = $(`<div id="html_c2f3bd1b57818aec9b6f2e8de6e30b36" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 9</h4>                 <p><b>Descrição:</b> Sparsely built</p>                 <p><b>Área:</b> 0.081 km²</p>                              <p><b>Temperatura Média:</b> 28.7°C</p>                 <p><b>Pontos Medidos:</b> 11</p>                 </div></div>`)[0];
+                popup_d02d5d10948376e324c6f22bd8052d24.setContent(html_c2f3bd1b57818aec9b6f2e8de6e30b36);
+            
+        
+
+        geo_json_b82882e55655389af71a9c08965ff26b.bindPopup(popup_d02d5d10948376e324c6f22bd8052d24)
+        ;
+
+        
+    
+    
+            geo_json_b82882e55655389af71a9c08965ff26b.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_1db1386f5fdc396a02f0dc664d50f5c3_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#696969", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_1db1386f5fdc396a02f0dc664d50f5c3_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_1db1386f5fdc396a02f0dc664d50f5c3 = L.geoJson(null, {
+                onEachFeature: geo_json_1db1386f5fdc396a02f0dc664d50f5c3_onEachFeature,
+            
+                style: geo_json_1db1386f5fdc396a02f0dc664d50f5c3_styler,
+            ...{
+}
+        });
+
+        function geo_json_1db1386f5fdc396a02f0dc664d50f5c3_add (data) {
+            geo_json_1db1386f5fdc396a02f0dc664d50f5c3
+                .addData(data);
+        }
+            geo_json_1db1386f5fdc396a02f0dc664d50f5c3_add({"features": [{"geometry": {"coordinates": [[[-51.99820871205144, -29.4705058005113, 0.0], [-51.99678992671385, -29.47172190857326, 0.0], [-51.99585644521934, -29.46880208082731, 0.0], [-51.99732917683566, -29.46827938177285, 0.0], [-51.99820871205144, -29.4705058005113, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_1db1386f5fdc396a02f0dc664d50f5c3.bindTooltip(
+                `<div>
+                     LCZ 10: Heavy industry
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_6710f43a97c8176eef23af88d7e12d6b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_84e3b981f7c41e65865a62297c2be36f = $(`<div id="html_84e3b981f7c41e65865a62297c2be36f" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 10</h4>                 <p><b>Descrição:</b> Heavy industry</p>                 <p><b>Área:</b> 0.064 km²</p>                              <p><b>Temperatura Média:</b> 30.5°C</p>                 <p><b>Pontos Medidos:</b> 7</p>                 </div></div>`)[0];
+                popup_6710f43a97c8176eef23af88d7e12d6b.setContent(html_84e3b981f7c41e65865a62297c2be36f);
+            
+        
+
+        geo_json_1db1386f5fdc396a02f0dc664d50f5c3.bindPopup(popup_6710f43a97c8176eef23af88d7e12d6b)
+        ;
+
+        
+    
+    
+            geo_json_1db1386f5fdc396a02f0dc664d50f5c3.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_8f4c1c5c5c1eff3556670945cba676cd_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#696969", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_8f4c1c5c5c1eff3556670945cba676cd_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_8f4c1c5c5c1eff3556670945cba676cd = L.geoJson(null, {
+                onEachFeature: geo_json_8f4c1c5c5c1eff3556670945cba676cd_onEachFeature,
+            
+                style: geo_json_8f4c1c5c5c1eff3556670945cba676cd_styler,
+            ...{
+}
+        });
+
+        function geo_json_8f4c1c5c5c1eff3556670945cba676cd_add (data) {
+            geo_json_8f4c1c5c5c1eff3556670945cba676cd
+                .addData(data);
+        }
+            geo_json_8f4c1c5c5c1eff3556670945cba676cd_add({"features": [{"geometry": {"coordinates": [[[-52.00706974837709, -29.47294668525578, 0.0], [-52.0029747575326, -29.47411532771724, 0.0], [-52.0013381998101, -29.47012229239409, 0.0], [-52.00706974837709, -29.47294668525578, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_8f4c1c5c5c1eff3556670945cba676cd.bindTooltip(
+                `<div>
+                     LCZ 10: Heavy industry
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_08b6552029016e7b2ee1a358515c60db = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b4bc18c11f8a9b9186ccf24e132d0a14 = $(`<div id="html_b4bc18c11f8a9b9186ccf24e132d0a14" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 10</h4>                 <p><b>Descrição:</b> Heavy industry</p>                 <p><b>Área:</b> 0.130 km²</p>                              <p><b>Temperatura Média:</b> 30.5°C</p>                 <p><b>Pontos Medidos:</b> 7</p>                 </div></div>`)[0];
+                popup_08b6552029016e7b2ee1a358515c60db.setContent(html_b4bc18c11f8a9b9186ccf24e132d0a14);
+            
+        
+
+        geo_json_8f4c1c5c5c1eff3556670945cba676cd.bindPopup(popup_08b6552029016e7b2ee1a358515c60db)
+        ;
+
+        
+    
+    
+            geo_json_8f4c1c5c5c1eff3556670945cba676cd.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_74db8b6820afc1c38687b8f7c2972499_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#696969", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_74db8b6820afc1c38687b8f7c2972499_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_74db8b6820afc1c38687b8f7c2972499 = L.geoJson(null, {
+                onEachFeature: geo_json_74db8b6820afc1c38687b8f7c2972499_onEachFeature,
+            
+                style: geo_json_74db8b6820afc1c38687b8f7c2972499_styler,
+            ...{
+}
+        });
+
+        function geo_json_74db8b6820afc1c38687b8f7c2972499_add (data) {
+            geo_json_74db8b6820afc1c38687b8f7c2972499
+                .addData(data);
+        }
+            geo_json_74db8b6820afc1c38687b8f7c2972499_add({"features": [{"geometry": {"coordinates": [[[-52.01258519849939, -29.47427039551991, 0.0], [-52.00847932805586, -29.4754371315832, 0.0], [-52.00824830419859, -29.47518226416944, 0.0], [-52.00988821052822, -29.47468861925336, 0.0], [-52.00936420737597, -29.4738763349206, 0.0], [-52.01209722989547, -29.47315658715628, 0.0], [-52.01232879430512, -29.47357654032945, 0.0], [-52.01258519849939, -29.47427039551991, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_74db8b6820afc1c38687b8f7c2972499.bindTooltip(
+                `<div>
+                     LCZ 10: Heavy industry
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_5d857bd90da0b1b1dea9573c74208df4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_44247cbcffbc922a019fb791d6b97889 = $(`<div id="html_44247cbcffbc922a019fb791d6b97889" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ 10</h4>                 <p><b>Descrição:</b> Heavy industry</p>                 <p><b>Área:</b> 0.056 km²</p>                              <p><b>Temperatura Média:</b> 30.5°C</p>                 <p><b>Pontos Medidos:</b> 7</p>                 </div></div>`)[0];
+                popup_5d857bd90da0b1b1dea9573c74208df4.setContent(html_44247cbcffbc922a019fb791d6b97889);
+            
+        
+
+        geo_json_74db8b6820afc1c38687b8f7c2972499.bindPopup(popup_5d857bd90da0b1b1dea9573c74208df4)
+        ;
+
+        
+    
+    
+            geo_json_74db8b6820afc1c38687b8f7c2972499.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_a2e01bb8375247109c14ea9d08eea7ca_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#006400", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_a2e01bb8375247109c14ea9d08eea7ca_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_a2e01bb8375247109c14ea9d08eea7ca = L.geoJson(null, {
+                onEachFeature: geo_json_a2e01bb8375247109c14ea9d08eea7ca_onEachFeature,
+            
+                style: geo_json_a2e01bb8375247109c14ea9d08eea7ca_styler,
+            ...{
+}
+        });
+
+        function geo_json_a2e01bb8375247109c14ea9d08eea7ca_add (data) {
+            geo_json_a2e01bb8375247109c14ea9d08eea7ca
+                .addData(data);
+        }
+            geo_json_a2e01bb8375247109c14ea9d08eea7ca_add({"features": [{"geometry": {"coordinates": [[[-51.99781162020943, -29.4561895097489, 0.0], [-51.99430925674933, -29.45653438026509, 0.0], [-51.99350861474169, -29.45001323388902, 0.0], [-51.99701863663681, -29.44969783074911, 0.0], [-51.99781162020943, -29.4561895097489, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_a2e01bb8375247109c14ea9d08eea7ca.bindTooltip(
+                `<div>
+                     LCZ A: Dense trees
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_3eca0d1d61d1f9ad1ab5aa045cad2d51 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e67a36cec5e74077c1b2e2c422c33124 = $(`<div id="html_e67a36cec5e74077c1b2e2c422c33124" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ A</h4>                 <p><b>Descrição:</b> Dense trees</p>                 <p><b>Área:</b> 0.328 km²</p>                              <p><b>Temperatura Média:</b> 26.6°C</p>                 <p><b>Pontos Medidos:</b> 10</p>                 </div></div>`)[0];
+                popup_3eca0d1d61d1f9ad1ab5aa045cad2d51.setContent(html_e67a36cec5e74077c1b2e2c422c33124);
+            
+        
+
+        geo_json_a2e01bb8375247109c14ea9d08eea7ca.bindPopup(popup_3eca0d1d61d1f9ad1ab5aa045cad2d51)
+        ;
+
+        
+    
+    
+            geo_json_a2e01bb8375247109c14ea9d08eea7ca.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_456186ddf8786656c63d8fa8ac509a45_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#006400", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_456186ddf8786656c63d8fa8ac509a45_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_456186ddf8786656c63d8fa8ac509a45 = L.geoJson(null, {
+                onEachFeature: geo_json_456186ddf8786656c63d8fa8ac509a45_onEachFeature,
+            
+                style: geo_json_456186ddf8786656c63d8fa8ac509a45_styler,
+            ...{
+}
+        });
+
+        function geo_json_456186ddf8786656c63d8fa8ac509a45_add (data) {
+            geo_json_456186ddf8786656c63d8fa8ac509a45
+                .addData(data);
+        }
+            geo_json_456186ddf8786656c63d8fa8ac509a45_add({"features": [{"geometry": {"coordinates": [[[-51.9536184343958, -29.44658903727347, 0.0], [-51.95352081454368, -29.44685384386283, 0.0], [-51.95339616416182, -29.44711011405408, 0.0], [-51.95290358744486, -29.44743062669047, 0.0], [-51.95180902295129, -29.44778836879843, 0.0], [-51.95128975974909, -29.44661219919009, 0.0], [-51.95254590718456, -29.44603515144074, 0.0], [-51.95295525027039, -29.44616566693154, 0.0], [-51.95321220808686, -29.44604868335998, 0.0], [-51.95395688465394, -29.44617816708989, 0.0], [-51.9536184343958, -29.44658903727347, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_456186ddf8786656c63d8fa8ac509a45.bindTooltip(
+                `<div>
+                     LCZ A: Dense trees
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_aa54353495daab11dd6df740c4e0e21d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_84d5805b8c8639e6d6c6bd6c9835fb63 = $(`<div id="html_84d5805b8c8639e6d6c6bd6c9835fb63" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ A</h4>                 <p><b>Descrição:</b> Dense trees</p>                 <p><b>Área:</b> 0.039 km²</p>                              <p><b>Temperatura Média:</b> 26.6°C</p>                 <p><b>Pontos Medidos:</b> 10</p>                 </div></div>`)[0];
+                popup_aa54353495daab11dd6df740c4e0e21d.setContent(html_84d5805b8c8639e6d6c6bd6c9835fb63);
+            
+        
+
+        geo_json_456186ddf8786656c63d8fa8ac509a45.bindPopup(popup_aa54353495daab11dd6df740c4e0e21d)
+        ;
+
+        
+    
+    
+            geo_json_456186ddf8786656c63d8fa8ac509a45.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_ec0f0fb68b04b9b139534d68fd7bb4a7_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#006400", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_ec0f0fb68b04b9b139534d68fd7bb4a7_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_ec0f0fb68b04b9b139534d68fd7bb4a7 = L.geoJson(null, {
+                onEachFeature: geo_json_ec0f0fb68b04b9b139534d68fd7bb4a7_onEachFeature,
+            
+                style: geo_json_ec0f0fb68b04b9b139534d68fd7bb4a7_styler,
+            ...{
+}
+        });
+
+        function geo_json_ec0f0fb68b04b9b139534d68fd7bb4a7_add (data) {
+            geo_json_ec0f0fb68b04b9b139534d68fd7bb4a7
+                .addData(data);
+        }
+            geo_json_ec0f0fb68b04b9b139534d68fd7bb4a7_add({"features": [{"geometry": {"coordinates": [[[-51.94694427855429, -29.44092639158232, 0.0], [-51.94758608637829, -29.44138000280628, 0.0], [-51.94786248111389, -29.4417645422907, 0.0], [-51.947849452055, -29.4420961406767, 0.0], [-51.94762975607497, -29.44221714475464, 0.0], [-51.94771128079086, -29.44257510396184, 0.0], [-51.94710811830204, -29.44274298849466, 0.0], [-51.94694268994754, -29.44310368077977, 0.0], [-51.94652574707931, -29.44326462722731, 0.0], [-51.94655087741845, -29.44349399416195, 0.0], [-51.94631235383007, -29.44334466667173, 0.0], [-51.94623610082929, -29.44313250840576, 0.0], [-51.94610518311386, -29.44282763794376, 0.0], [-51.94605625930895, -29.44266471095166, 0.0], [-51.94600662701981, -29.44253723597996, 0.0], [-51.94554102564146, -29.44275029757911, 0.0], [-51.94581783490667, -29.44354530406363, 0.0], [-51.94551914734757, -29.4434959255749, 0.0], [-51.94526289562275, -29.44313041020562, 0.0], [-51.94508519297565, -29.44305457630363, 0.0], [-51.94483144950321, -29.4423590171154, 0.0], [-51.9452050985532, -29.44216640399388, 0.0], [-51.94583916808521, -29.44204860175534, 0.0], [-51.94609370608332, -29.4419785635125, 0.0], [-51.94564672392246, -29.44103776307082, 0.0], [-51.94694427855429, -29.44092639158232, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_ec0f0fb68b04b9b139534d68fd7bb4a7.bindTooltip(
+                `<div>
+                     LCZ A: Dense trees
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_29ee777d7cb1ae54b0a63f284ccca8b4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ae674bb9250f5e4e558e269906a4c0dc = $(`<div id="html_ae674bb9250f5e4e558e269906a4c0dc" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ A</h4>                 <p><b>Descrição:</b> Dense trees</p>                 <p><b>Área:</b> 0.062 km²</p>                              <p><b>Temperatura Média:</b> 26.6°C</p>                 <p><b>Pontos Medidos:</b> 10</p>                 </div></div>`)[0];
+                popup_29ee777d7cb1ae54b0a63f284ccca8b4.setContent(html_ae674bb9250f5e4e558e269906a4c0dc);
+            
+        
+
+        geo_json_ec0f0fb68b04b9b139534d68fd7bb4a7.bindPopup(popup_29ee777d7cb1ae54b0a63f284ccca8b4)
+        ;
+
+        
+    
+    
+            geo_json_ec0f0fb68b04b9b139534d68fd7bb4a7.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_a3e41fdb1a6a6d894e1f3f6f1f00d5cc_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#228B22", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_a3e41fdb1a6a6d894e1f3f6f1f00d5cc_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_a3e41fdb1a6a6d894e1f3f6f1f00d5cc = L.geoJson(null, {
+                onEachFeature: geo_json_a3e41fdb1a6a6d894e1f3f6f1f00d5cc_onEachFeature,
+            
+                style: geo_json_a3e41fdb1a6a6d894e1f3f6f1f00d5cc_styler,
+            ...{
+}
+        });
+
+        function geo_json_a3e41fdb1a6a6d894e1f3f6f1f00d5cc_add (data) {
+            geo_json_a3e41fdb1a6a6d894e1f3f6f1f00d5cc
+                .addData(data);
+        }
+            geo_json_a3e41fdb1a6a6d894e1f3f6f1f00d5cc_add({"features": [{"geometry": {"coordinates": [[[-51.95610620259457, -29.42985624998332, 0.0], [-51.95228514722112, -29.42952938239911, 0.0], [-51.95309221773736, -29.42720297158425, 0.0], [-51.95629370380443, -29.42784830382829, 0.0], [-51.95610620259457, -29.42985624998332, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_a3e41fdb1a6a6d894e1f3f6f1f00d5cc.bindTooltip(
+                `<div>
+                     LCZ B: Scattered trees
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_dc2a2f4b98a15b67df0954c592a11dc4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1430cf371438c0d70e74e12659a651ff = $(`<div id="html_1430cf371438c0d70e74e12659a651ff" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ B</h4>                 <p><b>Descrição:</b> Scattered trees</p>                 <p><b>Área:</b> 0.112 km²</p>                              <p><b>Temperatura Média:</b> 27.4°C</p>                 <p><b>Pontos Medidos:</b> 12</p>                 </div></div>`)[0];
+                popup_dc2a2f4b98a15b67df0954c592a11dc4.setContent(html_1430cf371438c0d70e74e12659a651ff);
+            
+        
+
+        geo_json_a3e41fdb1a6a6d894e1f3f6f1f00d5cc.bindPopup(popup_dc2a2f4b98a15b67df0954c592a11dc4)
+        ;
+
+        
+    
+    
+            geo_json_a3e41fdb1a6a6d894e1f3f6f1f00d5cc.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_28ca2fa660c50fb4157c44e6910461f1_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#228B22", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_28ca2fa660c50fb4157c44e6910461f1_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_28ca2fa660c50fb4157c44e6910461f1 = L.geoJson(null, {
+                onEachFeature: geo_json_28ca2fa660c50fb4157c44e6910461f1_onEachFeature,
+            
+                style: geo_json_28ca2fa660c50fb4157c44e6910461f1_styler,
+            ...{
+}
+        });
+
+        function geo_json_28ca2fa660c50fb4157c44e6910461f1_add (data) {
+            geo_json_28ca2fa660c50fb4157c44e6910461f1
+                .addData(data);
+        }
+            geo_json_28ca2fa660c50fb4157c44e6910461f1_add({"features": [{"geometry": {"coordinates": [[[-51.94153946290086, -29.439806999733, 0.0], [-51.94019591713511, -29.43957401850216, 0.0], [-51.94012249229113, -29.4380789870695, 0.0], [-51.94208191935008, -29.43882029756549, 0.0], [-51.94153946290086, -29.439806999733, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_28ca2fa660c50fb4157c44e6910461f1.bindTooltip(
+                `<div>
+                     LCZ B: Scattered trees
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_182105a5f5d54521afb7155c36ef5a22 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b80d445703c9ecbe70d7b4af01c30de0 = $(`<div id="html_b80d445703c9ecbe70d7b4af01c30de0" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ B</h4>                 <p><b>Descrição:</b> Scattered trees</p>                 <p><b>Área:</b> 0.031 km²</p>                              <p><b>Temperatura Média:</b> 27.4°C</p>                 <p><b>Pontos Medidos:</b> 12</p>                 </div></div>`)[0];
+                popup_182105a5f5d54521afb7155c36ef5a22.setContent(html_b80d445703c9ecbe70d7b4af01c30de0);
+            
+        
+
+        geo_json_28ca2fa660c50fb4157c44e6910461f1.bindPopup(popup_182105a5f5d54521afb7155c36ef5a22)
+        ;
+
+        
+    
+    
+            geo_json_28ca2fa660c50fb4157c44e6910461f1.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_ba03e1b49b5f251e23836566de21efbd_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#228B22", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_ba03e1b49b5f251e23836566de21efbd_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_ba03e1b49b5f251e23836566de21efbd = L.geoJson(null, {
+                onEachFeature: geo_json_ba03e1b49b5f251e23836566de21efbd_onEachFeature,
+            
+                style: geo_json_ba03e1b49b5f251e23836566de21efbd_styler,
+            ...{
+}
+        });
+
+        function geo_json_ba03e1b49b5f251e23836566de21efbd_add (data) {
+            geo_json_ba03e1b49b5f251e23836566de21efbd
+                .addData(data);
+        }
+            geo_json_ba03e1b49b5f251e23836566de21efbd_add({"features": [{"geometry": {"coordinates": [[[-52.00992027438779, -29.47256929523272, 0.0], [-52.0082765670352, -29.47302621783021, 0.0], [-52.00836420732277, -29.47218869171313, 0.0], [-52.0097324177425, -29.47172804798186, 0.0], [-52.00992027438779, -29.47256929523272, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_ba03e1b49b5f251e23836566de21efbd.bindTooltip(
+                `<div>
+                     LCZ B: Scattered trees
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_ab37bfe7aa8f6833f4c9a1c7d053c279 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7d4977b263904c201757e27a4e57650c = $(`<div id="html_7d4977b263904c201757e27a4e57650c" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ B</h4>                 <p><b>Descrição:</b> Scattered trees</p>                 <p><b>Área:</b> 0.018 km²</p>                              <p><b>Temperatura Média:</b> 27.4°C</p>                 <p><b>Pontos Medidos:</b> 12</p>                 </div></div>`)[0];
+                popup_ab37bfe7aa8f6833f4c9a1c7d053c279.setContent(html_7d4977b263904c201757e27a4e57650c);
+            
+        
+
+        geo_json_ba03e1b49b5f251e23836566de21efbd.bindPopup(popup_ab37bfe7aa8f6833f4c9a1c7d053c279)
+        ;
+
+        
+    
+    
+            geo_json_ba03e1b49b5f251e23836566de21efbd.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_abc5bebc3cbeb788961d1265d5053508_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#228B22", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_abc5bebc3cbeb788961d1265d5053508_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_abc5bebc3cbeb788961d1265d5053508 = L.geoJson(null, {
+                onEachFeature: geo_json_abc5bebc3cbeb788961d1265d5053508_onEachFeature,
+            
+                style: geo_json_abc5bebc3cbeb788961d1265d5053508_styler,
+            ...{
+}
+        });
+
+        function geo_json_abc5bebc3cbeb788961d1265d5053508_add (data) {
+            geo_json_abc5bebc3cbeb788961d1265d5053508
+                .addData(data);
+        }
+            geo_json_abc5bebc3cbeb788961d1265d5053508_add({"features": [{"geometry": {"coordinates": [[[-51.94231065422018, -29.43644243017378, 0.0], [-51.9419163077249, -29.43556528074484, 0.0], [-51.94266681585849, -29.43433440092801, 0.0], [-51.94374177493828, -29.43509528590365, 0.0], [-51.94231065422018, -29.43644243017378, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_abc5bebc3cbeb788961d1265d5053508.bindTooltip(
+                `<div>
+                     LCZ B: Scattered trees
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_cd020210405fcee81092303c90991d01 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_72be38cf4789bd4a2cef355733f9f88d = $(`<div id="html_72be38cf4789bd4a2cef355733f9f88d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ B</h4>                 <p><b>Descrição:</b> Scattered trees</p>                 <p><b>Área:</b> 0.026 km²</p>                              <p><b>Temperatura Média:</b> 27.4°C</p>                 <p><b>Pontos Medidos:</b> 12</p>                 </div></div>`)[0];
+                popup_cd020210405fcee81092303c90991d01.setContent(html_72be38cf4789bd4a2cef355733f9f88d);
+            
+        
+
+        geo_json_abc5bebc3cbeb788961d1265d5053508.bindPopup(popup_cd020210405fcee81092303c90991d01)
+        ;
+
+        
+    
+    
+            geo_json_abc5bebc3cbeb788961d1265d5053508.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_d4054b4bf851fb9f4f9f4761d734a063_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#228B22", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_d4054b4bf851fb9f4f9f4761d734a063_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_d4054b4bf851fb9f4f9f4761d734a063 = L.geoJson(null, {
+                onEachFeature: geo_json_d4054b4bf851fb9f4f9f4761d734a063_onEachFeature,
+            
+                style: geo_json_d4054b4bf851fb9f4f9f4761d734a063_styler,
+            ...{
+}
+        });
+
+        function geo_json_d4054b4bf851fb9f4f9f4761d734a063_add (data) {
+            geo_json_d4054b4bf851fb9f4f9f4761d734a063
+                .addData(data);
+        }
+            geo_json_d4054b4bf851fb9f4f9f4761d734a063_add({"features": [{"geometry": {"coordinates": [[[-52.00565619336351, -29.47132960411302, 0.0], [-52.00509393721676, -29.4698172303658, 0.0], [-52.0085306515826, -29.46833646866182, 0.0], [-52.0088840175751, -29.4704284322736, 0.0], [-52.00794154836395, -29.47068873339013, 0.0], [-52.0062743877695, -29.4712327157646, 0.0], [-52.00565619336351, -29.47132960411302, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_d4054b4bf851fb9f4f9f4761d734a063.bindTooltip(
+                `<div>
+                     LCZ B: Scattered trees
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_2489091b5388609f896c06651ada06b2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_79724d0bf097c3cc7c0d715be0aec238 = $(`<div id="html_79724d0bf097c3cc7c0d715be0aec238" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ B</h4>                 <p><b>Descrição:</b> Scattered trees</p>                 <p><b>Área:</b> 0.094 km²</p>                              <p><b>Temperatura Média:</b> 27.4°C</p>                 <p><b>Pontos Medidos:</b> 12</p>                 </div></div>`)[0];
+                popup_2489091b5388609f896c06651ada06b2.setContent(html_79724d0bf097c3cc7c0d715be0aec238);
+            
+        
+
+        geo_json_d4054b4bf851fb9f4f9f4761d734a063.bindPopup(popup_2489091b5388609f896c06651ada06b2)
+        ;
+
+        
+    
+    
+            geo_json_d4054b4bf851fb9f4f9f4761d734a063.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_6e019cfd801486963bdeda63db738e7a_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#228B22", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_6e019cfd801486963bdeda63db738e7a_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_6e019cfd801486963bdeda63db738e7a = L.geoJson(null, {
+                onEachFeature: geo_json_6e019cfd801486963bdeda63db738e7a_onEachFeature,
+            
+                style: geo_json_6e019cfd801486963bdeda63db738e7a_styler,
+            ...{
+}
+        });
+
+        function geo_json_6e019cfd801486963bdeda63db738e7a_add (data) {
+            geo_json_6e019cfd801486963bdeda63db738e7a
+                .addData(data);
+        }
+            geo_json_6e019cfd801486963bdeda63db738e7a_add({"features": [{"geometry": {"coordinates": [[[-52.05254376196947, -29.44041194841725, 0.0], [-52.05294387676127, -29.44392315303178, 0.0], [-52.04668535495367, -29.44465384009774, 0.0], [-52.04547952175012, -29.44173483831312, 0.0], [-52.05254376196947, -29.44041194841725, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_6e019cfd801486963bdeda63db738e7a.bindTooltip(
+                `<div>
+                     LCZ B: Scattered trees
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_26785fcb1f44545550df46acc6d0aa96 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1553f959e842b739175240a01f4bccf4 = $(`<div id="html_1553f959e842b739175240a01f4bccf4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ B</h4>                 <p><b>Descrição:</b> Scattered trees</p>                 <p><b>Área:</b> 0.316 km²</p>                              <p><b>Temperatura Média:</b> 27.4°C</p>                 <p><b>Pontos Medidos:</b> 12</p>                 </div></div>`)[0];
+                popup_26785fcb1f44545550df46acc6d0aa96.setContent(html_1553f959e842b739175240a01f4bccf4);
+            
+        
+
+        geo_json_6e019cfd801486963bdeda63db738e7a.bindPopup(popup_26785fcb1f44545550df46acc6d0aa96)
+        ;
+
+        
+    
+    
+            geo_json_6e019cfd801486963bdeda63db738e7a.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_32ef6a52632fdf04162c593f309ab2d8_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#90EE90", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_32ef6a52632fdf04162c593f309ab2d8_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_32ef6a52632fdf04162c593f309ab2d8 = L.geoJson(null, {
+                onEachFeature: geo_json_32ef6a52632fdf04162c593f309ab2d8_onEachFeature,
+            
+                style: geo_json_32ef6a52632fdf04162c593f309ab2d8_styler,
+            ...{
+}
+        });
+
+        function geo_json_32ef6a52632fdf04162c593f309ab2d8_add (data) {
+            geo_json_32ef6a52632fdf04162c593f309ab2d8
+                .addData(data);
+        }
+            geo_json_32ef6a52632fdf04162c593f309ab2d8_add({"features": [{"geometry": {"coordinates": [[[-51.99840065951212, -29.44434630685215, 0.0], [-51.99739634579159, -29.44449566597935, 0.0], [-51.99696047893849, -29.44144134436659, 0.0], [-51.99801872765062, -29.44135593591628, 0.0], [-51.99840065951212, -29.44434630685215, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_32ef6a52632fdf04162c593f309ab2d8.bindTooltip(
+                `<div>
+                     LCZ D: Low plants
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_5c10564570776e4c2a2822bb8ea592ee = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_791cbfc1ce08332257155991e022ab9c = $(`<div id="html_791cbfc1ce08332257155991e022ab9c" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ D</h4>                 <p><b>Descrição:</b> Low plants</p>                 <p><b>Área:</b> 0.045 km²</p>                              <p><b>Temperatura Média:</b> 28.0°C</p>                 <p><b>Pontos Medidos:</b> 3</p>                 </div></div>`)[0];
+                popup_5c10564570776e4c2a2822bb8ea592ee.setContent(html_791cbfc1ce08332257155991e022ab9c);
+            
+        
+
+        geo_json_32ef6a52632fdf04162c593f309ab2d8.bindPopup(popup_5c10564570776e4c2a2822bb8ea592ee)
+        ;
+
+        
+    
+    
+            geo_json_32ef6a52632fdf04162c593f309ab2d8.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_40daed00db337856da66bef4e1ecdc5a_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#90EE90", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_40daed00db337856da66bef4e1ecdc5a_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_40daed00db337856da66bef4e1ecdc5a = L.geoJson(null, {
+                onEachFeature: geo_json_40daed00db337856da66bef4e1ecdc5a_onEachFeature,
+            
+                style: geo_json_40daed00db337856da66bef4e1ecdc5a_styler,
+            ...{
+}
+        });
+
+        function geo_json_40daed00db337856da66bef4e1ecdc5a_add (data) {
+            geo_json_40daed00db337856da66bef4e1ecdc5a
+                .addData(data);
+        }
+            geo_json_40daed00db337856da66bef4e1ecdc5a_add({"features": [{"geometry": {"coordinates": [[[-52.00087862403633, -29.42349416674427, 0.0], [-52.00108066915676, -29.42496215800494, 0.0], [-52.0000099755252, -29.42507436398157, 0.0], [-51.99980200200102, -29.42356716199586, 0.0], [-52.00087862403633, -29.42349416674427, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_40daed00db337856da66bef4e1ecdc5a.bindTooltip(
+                `<div>
+                     LCZ D: Low plants
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_b804bc905ca93a68651e36fac4ba226a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_740981e09820c2666e4b2d967598cf66 = $(`<div id="html_740981e09820c2666e4b2d967598cf66" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ D</h4>                 <p><b>Descrição:</b> Low plants</p>                 <p><b>Área:</b> 0.023 km²</p>                              <p><b>Temperatura Média:</b> 28.0°C</p>                 <p><b>Pontos Medidos:</b> 3</p>                 </div></div>`)[0];
+                popup_b804bc905ca93a68651e36fac4ba226a.setContent(html_740981e09820c2666e4b2d967598cf66);
+            
+        
+
+        geo_json_40daed00db337856da66bef4e1ecdc5a.bindPopup(popup_b804bc905ca93a68651e36fac4ba226a)
+        ;
+
+        
+    
+    
+            geo_json_40daed00db337856da66bef4e1ecdc5a.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_5c4d7a59d522077ab9595adcb9e23f80_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#90EE90", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_5c4d7a59d522077ab9595adcb9e23f80_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_5c4d7a59d522077ab9595adcb9e23f80 = L.geoJson(null, {
+                onEachFeature: geo_json_5c4d7a59d522077ab9595adcb9e23f80_onEachFeature,
+            
+                style: geo_json_5c4d7a59d522077ab9595adcb9e23f80_styler,
+            ...{
+}
+        });
+
+        function geo_json_5c4d7a59d522077ab9595adcb9e23f80_add (data) {
+            geo_json_5c4d7a59d522077ab9595adcb9e23f80
+                .addData(data);
+        }
+            geo_json_5c4d7a59d522077ab9595adcb9e23f80_add({"features": [{"geometry": {"coordinates": [[[-52.01636932314383, -29.44063924333054, 0.0], [-52.01564192534086, -29.44086789769418, 0.0], [-52.01530499723758, -29.43854259082156, 0.0], [-52.01614889615746, -29.43793062737687, 0.0], [-52.01636932314383, -29.44063924333054, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_5c4d7a59d522077ab9595adcb9e23f80.bindTooltip(
+                `<div>
+                     LCZ D: Low plants
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_f2ce79a2b456ef96777c46003425f20a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_06b597a3653f443e09ddd234ea6ea9c4 = $(`<div id="html_06b597a3653f443e09ddd234ea6ea9c4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ D</h4>                 <p><b>Descrição:</b> Low plants</p>                 <p><b>Área:</b> 0.030 km²</p>                              <p><b>Temperatura Média:</b> 28.0°C</p>                 <p><b>Pontos Medidos:</b> 3</p>                 </div></div>`)[0];
+                popup_f2ce79a2b456ef96777c46003425f20a.setContent(html_06b597a3653f443e09ddd234ea6ea9c4);
+            
+        
+
+        geo_json_5c4d7a59d522077ab9595adcb9e23f80.bindPopup(popup_f2ce79a2b456ef96777c46003425f20a)
+        ;
+
+        
+    
+    
+            geo_json_5c4d7a59d522077ab9595adcb9e23f80.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_81238fbc4db067594430526faa74f4bd_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#808080", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_81238fbc4db067594430526faa74f4bd_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_81238fbc4db067594430526faa74f4bd = L.geoJson(null, {
+                onEachFeature: geo_json_81238fbc4db067594430526faa74f4bd_onEachFeature,
+            
+                style: geo_json_81238fbc4db067594430526faa74f4bd_styler,
+            ...{
+}
+        });
+
+        function geo_json_81238fbc4db067594430526faa74f4bd_add (data) {
+            geo_json_81238fbc4db067594430526faa74f4bd
+                .addData(data);
+        }
+            geo_json_81238fbc4db067594430526faa74f4bd_add({"features": [{"geometry": {"coordinates": [[[-52.00224951963872, -29.43499303990813, 0.0], [-52.00181230633805, -29.43507285016297, 0.0], [-52.00170212638415, -29.43494921779568, 0.0], [-52.00221220248839, -29.43485152499293, 0.0], [-52.00224951963872, -29.43499303990813, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_81238fbc4db067594430526faa74f4bd.bindTooltip(
+                `<div>
+                     LCZ E: Bare rock or paved
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_a507891663fbfb1a118fc439d4186665 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_05e49a154274d23261f51c91551d21c6 = $(`<div id="html_05e49a154274d23261f51c91551d21c6" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ E</h4>                 <p><b>Descrição:</b> Bare rock or paved</p>                 <p><b>Área:</b> 0.001 km²</p>                              <p><b>Temperatura Média:</b> 30.6°C</p>                 <p><b>Pontos Medidos:</b> 1</p>                 </div></div>`)[0];
+                popup_a507891663fbfb1a118fc439d4186665.setContent(html_05e49a154274d23261f51c91551d21c6);
+            
+        
+
+        geo_json_81238fbc4db067594430526faa74f4bd.bindPopup(popup_a507891663fbfb1a118fc439d4186665)
+        ;
+
+        
+    
+    
+            geo_json_81238fbc4db067594430526faa74f4bd.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_8900fe18642b9a89408810ca35a3cd36_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#808080", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_8900fe18642b9a89408810ca35a3cd36_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_8900fe18642b9a89408810ca35a3cd36 = L.geoJson(null, {
+                onEachFeature: geo_json_8900fe18642b9a89408810ca35a3cd36_onEachFeature,
+            
+                style: geo_json_8900fe18642b9a89408810ca35a3cd36_styler,
+            ...{
+}
+        });
+
+        function geo_json_8900fe18642b9a89408810ca35a3cd36_add (data) {
+            geo_json_8900fe18642b9a89408810ca35a3cd36
+                .addData(data);
+        }
+            geo_json_8900fe18642b9a89408810ca35a3cd36_add({"features": [{"geometry": {"coordinates": [[[-51.95839402638951, -29.44348752939164, 0.0], [-51.9584068798659, -29.44339519388958, 0.0], [-51.95836285425229, -29.44333048076841, 0.0], [-51.95837510716782, -29.44323747402754, 0.0], [-51.95894432977238, -29.44331311352425, 0.0], [-51.95839402638951, -29.44348752939164, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_8900fe18642b9a89408810ca35a3cd36.bindTooltip(
+                `<div>
+                     LCZ E: Bare rock or paved
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_74ee4e60af981d5c091cc0e78f5e0115 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4eddc4cef7ad5fa731686994737c7f15 = $(`<div id="html_4eddc4cef7ad5fa731686994737c7f15" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ E</h4>                 <p><b>Descrição:</b> Bare rock or paved</p>                 <p><b>Área:</b> 0.001 km²</p>                              <p><b>Temperatura Média:</b> 30.6°C</p>                 <p><b>Pontos Medidos:</b> 1</p>                 </div></div>`)[0];
+                popup_74ee4e60af981d5c091cc0e78f5e0115.setContent(html_4eddc4cef7ad5fa731686994737c7f15);
+            
+        
+
+        geo_json_8900fe18642b9a89408810ca35a3cd36.bindPopup(popup_74ee4e60af981d5c091cc0e78f5e0115)
+        ;
+
+        
+    
+    
+            geo_json_8900fe18642b9a89408810ca35a3cd36.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_79b89e5387e0e5148a2faae80643eabd_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#808080", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_79b89e5387e0e5148a2faae80643eabd_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_79b89e5387e0e5148a2faae80643eabd = L.geoJson(null, {
+                onEachFeature: geo_json_79b89e5387e0e5148a2faae80643eabd_onEachFeature,
+            
+                style: geo_json_79b89e5387e0e5148a2faae80643eabd_styler,
+            ...{
+}
+        });
+
+        function geo_json_79b89e5387e0e5148a2faae80643eabd_add (data) {
+            geo_json_79b89e5387e0e5148a2faae80643eabd
+                .addData(data);
+        }
+            geo_json_79b89e5387e0e5148a2faae80643eabd_add({"features": [{"geometry": {"coordinates": [[[-51.95782147945341, -29.44306798500904, 0.0], [-51.95801441302159, -29.44340517284629, 0.0], [-51.95776626027934, -29.44337622529806, 0.0], [-51.9577233413036, -29.44357341394101, 0.0], [-51.9575751389206, -29.44354945221441, 0.0], [-51.95758108582019, -29.44349664093543, 0.0], [-51.95745265593181, -29.44348451320056, 0.0], [-51.95746589411322, -29.44336129679994, 0.0], [-51.95721815780094, -29.44331843852683, 0.0], [-51.95766242574717, -29.44318414815672, 0.0], [-51.95767637843316, -29.44311799140606, 0.0], [-51.95782147945341, -29.44306798500904, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_79b89e5387e0e5148a2faae80643eabd.bindTooltip(
+                `<div>
+                     LCZ E: Bare rock or paved
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_baa251e5b79a397573fcbe39d63e4161 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_03f1c77a94ee25d4454715197fbd4f7a = $(`<div id="html_03f1c77a94ee25d4454715197fbd4f7a" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ E</h4>                 <p><b>Descrição:</b> Bare rock or paved</p>                 <p><b>Área:</b> 0.002 km²</p>                              <p><b>Temperatura Média:</b> 30.6°C</p>                 <p><b>Pontos Medidos:</b> 1</p>                 </div></div>`)[0];
+                popup_baa251e5b79a397573fcbe39d63e4161.setContent(html_03f1c77a94ee25d4454715197fbd4f7a);
+            
+        
+
+        geo_json_79b89e5387e0e5148a2faae80643eabd.bindPopup(popup_baa251e5b79a397573fcbe39d63e4161)
+        ;
+
+        
+    
+    
+            geo_json_79b89e5387e0e5148a2faae80643eabd.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_18e4f22221d6dece65e0388f9d070ca4_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#D2691E", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_18e4f22221d6dece65e0388f9d070ca4_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_18e4f22221d6dece65e0388f9d070ca4 = L.geoJson(null, {
+                onEachFeature: geo_json_18e4f22221d6dece65e0388f9d070ca4_onEachFeature,
+            
+                style: geo_json_18e4f22221d6dece65e0388f9d070ca4_styler,
+            ...{
+}
+        });
+
+        function geo_json_18e4f22221d6dece65e0388f9d070ca4_add (data) {
+            geo_json_18e4f22221d6dece65e0388f9d070ca4
+                .addData(data);
+        }
+            geo_json_18e4f22221d6dece65e0388f9d070ca4_add({"features": [{"geometry": {"coordinates": [[[-52.00001159994738, -29.44015551870197, 0.0], [-51.99919701806213, -29.44021080857508, 0.0], [-51.99894654552982, -29.43902062325942, 0.0], [-51.9998386347844, -29.43895018960701, 0.0], [-52.00001159994738, -29.44015551870197, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_18e4f22221d6dece65e0388f9d070ca4.bindTooltip(
+                `<div>
+                     LCZ F: Bare soil or sand
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_f9cafc23d788858fc4c6564c41d9f12c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_34e33da57daa0ecc5ac16853f9a5207c = $(`<div id="html_34e33da57daa0ecc5ac16853f9a5207c" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ F</h4>                 <p><b>Descrição:</b> Bare soil or sand</p>                 <p><b>Área:</b> 0.015 km²</p>                              <p><b>Temperatura Média:</b> 29.3°C</p>                 <p><b>Pontos Medidos:</b> 5</p>                 </div></div>`)[0];
+                popup_f9cafc23d788858fc4c6564c41d9f12c.setContent(html_34e33da57daa0ecc5ac16853f9a5207c);
+            
+        
+
+        geo_json_18e4f22221d6dece65e0388f9d070ca4.bindPopup(popup_f9cafc23d788858fc4c6564c41d9f12c)
+        ;
+
+        
+    
+    
+            geo_json_18e4f22221d6dece65e0388f9d070ca4.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_ba6f599c0d12df172262d47e5b3c0cc0_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#D2691E", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_ba6f599c0d12df172262d47e5b3c0cc0_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_ba6f599c0d12df172262d47e5b3c0cc0 = L.geoJson(null, {
+                onEachFeature: geo_json_ba6f599c0d12df172262d47e5b3c0cc0_onEachFeature,
+            
+                style: geo_json_ba6f599c0d12df172262d47e5b3c0cc0_styler,
+            ...{
+}
+        });
+
+        function geo_json_ba6f599c0d12df172262d47e5b3c0cc0_add (data) {
+            geo_json_ba6f599c0d12df172262d47e5b3c0cc0
+                .addData(data);
+        }
+            geo_json_ba6f599c0d12df172262d47e5b3c0cc0_add({"features": [{"geometry": {"coordinates": [[[-51.94551496800405, -29.43004192372984, 0.0], [-51.94621042772476, -29.43197456756668, 0.0], [-51.94662907120782, -29.43439999648571, 0.0], [-51.9462368782463, -29.43422941754169, 0.0], [-51.94503512076054, -29.43503149219485, 0.0], [-51.94460520028843, -29.43217398005564, 0.0], [-51.94437113047734, -29.43027794871472, 0.0], [-51.94551496800405, -29.43004192372984, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_ba6f599c0d12df172262d47e5b3c0cc0.bindTooltip(
+                `<div>
+                     LCZ F: Bare soil or sand
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_a0413b6f996e3dbaac64f5772417b14f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2b96b6727358899ffece058732a81d70 = $(`<div id="html_2b96b6727358899ffece058732a81d70" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ F</h4>                 <p><b>Descrição:</b> Bare soil or sand</p>                 <p><b>Área:</b> 0.098 km²</p>                              <p><b>Temperatura Média:</b> 29.3°C</p>                 <p><b>Pontos Medidos:</b> 5</p>                 </div></div>`)[0];
+                popup_a0413b6f996e3dbaac64f5772417b14f.setContent(html_2b96b6727358899ffece058732a81d70);
+            
+        
+
+        geo_json_ba6f599c0d12df172262d47e5b3c0cc0.bindPopup(popup_a0413b6f996e3dbaac64f5772417b14f)
+        ;
+
+        
+    
+    
+            geo_json_ba6f599c0d12df172262d47e5b3c0cc0.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_2f87fb7eb535c1de6f38fbf83aaf3ccf_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#D2691E", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_2f87fb7eb535c1de6f38fbf83aaf3ccf_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_2f87fb7eb535c1de6f38fbf83aaf3ccf = L.geoJson(null, {
+                onEachFeature: geo_json_2f87fb7eb535c1de6f38fbf83aaf3ccf_onEachFeature,
+            
+                style: geo_json_2f87fb7eb535c1de6f38fbf83aaf3ccf_styler,
+            ...{
+}
+        });
+
+        function geo_json_2f87fb7eb535c1de6f38fbf83aaf3ccf_add (data) {
+            geo_json_2f87fb7eb535c1de6f38fbf83aaf3ccf
+                .addData(data);
+        }
+            geo_json_2f87fb7eb535c1de6f38fbf83aaf3ccf_add({"features": [{"geometry": {"coordinates": [[[-51.93086019419933, -29.41986342453724, 0.0], [-51.93019510751754, -29.42072343113475, 0.0], [-51.92993449841312, -29.42024868065584, 0.0], [-51.92950694887641, -29.42006975176662, 0.0], [-51.92918914424835, -29.41996062244936, 0.0], [-51.92823551559827, -29.41999794178755, 0.0], [-51.92761858025518, -29.4200955448777, 0.0], [-51.92737020418016, -29.41981866940097, 0.0], [-51.92739513968908, -29.41947044445252, 0.0], [-51.92735365727032, -29.41932430094098, 0.0], [-51.92632161618297, -29.4197064747435, 0.0], [-51.92620349463705, -29.41935087681676, 0.0], [-51.92724711718172, -29.41893268770499, 0.0], [-51.92941029254629, -29.41820814512445, 0.0], [-51.92976263243734, -29.41841473694673, 0.0], [-51.92977618319197, -29.41868719295607, 0.0], [-51.92982013114447, -29.41895056886836, 0.0], [-51.9298191894531, -29.41910932947643, 0.0], [-51.93086019419933, -29.41986342453724, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_2f87fb7eb535c1de6f38fbf83aaf3ccf.bindTooltip(
+                `<div>
+                     LCZ F: Bare soil or sand
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_1c09d7c0bface4fa68ec5031f0fd538e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5e5136b5bd633c8610ee27b543385067 = $(`<div id="html_5e5136b5bd633c8610ee27b543385067" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ F</h4>                 <p><b>Descrição:</b> Bare soil or sand</p>                 <p><b>Área:</b> 0.071 km²</p>                              <p><b>Temperatura Média:</b> 29.3°C</p>                 <p><b>Pontos Medidos:</b> 5</p>                 </div></div>`)[0];
+                popup_1c09d7c0bface4fa68ec5031f0fd538e.setContent(html_5e5136b5bd633c8610ee27b543385067);
+            
+        
+
+        geo_json_2f87fb7eb535c1de6f38fbf83aaf3ccf.bindPopup(popup_1c09d7c0bface4fa68ec5031f0fd538e)
+        ;
+
+        
+    
+    
+            geo_json_2f87fb7eb535c1de6f38fbf83aaf3ccf.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_8158b748a48bf912d92744d044a8c347_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#1E90FF", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_8158b748a48bf912d92744d044a8c347_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_8158b748a48bf912d92744d044a8c347 = L.geoJson(null, {
+                onEachFeature: geo_json_8158b748a48bf912d92744d044a8c347_onEachFeature,
+            
+                style: geo_json_8158b748a48bf912d92744d044a8c347_styler,
+            ...{
+}
+        });
+
+        function geo_json_8158b748a48bf912d92744d044a8c347_add (data) {
+            geo_json_8158b748a48bf912d92744d044a8c347
+                .addData(data);
+        }
+            geo_json_8158b748a48bf912d92744d044a8c347_add({"features": [{"geometry": {"coordinates": [[[-51.96595163597748, -29.47345205012351, 0.0], [-51.9600042486404, -29.47234126518427, 0.0], [-51.96031175614882, -29.47067488704556, 0.0], [-51.96637346821245, -29.47224270834366, 0.0], [-51.96595163597748, -29.47345205012351, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_8158b748a48bf912d92744d044a8c347.bindTooltip(
+                `<div>
+                     LCZ G: Water
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_4a32f4fcc0c0919515c25892ceb4b314 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a5d8b7fedc6d21c9f36521d4f28da7dc = $(`<div id="html_a5d8b7fedc6d21c9f36521d4f28da7dc" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ G</h4>                 <p><b>Descrição:</b> Water</p>                 <p><b>Área:</b> 0.130 km²</p>                              <p><b>Temperatura Média:</b> 26.1°C</p>                 <p><b>Pontos Medidos:</b> 13</p>                 </div></div>`)[0];
+                popup_4a32f4fcc0c0919515c25892ceb4b314.setContent(html_a5d8b7fedc6d21c9f36521d4f28da7dc);
+            
+        
+
+        geo_json_8158b748a48bf912d92744d044a8c347.bindPopup(popup_4a32f4fcc0c0919515c25892ceb4b314)
+        ;
+
+        
+    
+    
+            geo_json_8158b748a48bf912d92744d044a8c347.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_afc3071e72e5f5dfee8e2c2aa7688d1b_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#1E90FF", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_afc3071e72e5f5dfee8e2c2aa7688d1b_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_afc3071e72e5f5dfee8e2c2aa7688d1b = L.geoJson(null, {
+                onEachFeature: geo_json_afc3071e72e5f5dfee8e2c2aa7688d1b_onEachFeature,
+            
+                style: geo_json_afc3071e72e5f5dfee8e2c2aa7688d1b_styler,
+            ...{
+}
+        });
+
+        function geo_json_afc3071e72e5f5dfee8e2c2aa7688d1b_add (data) {
+            geo_json_afc3071e72e5f5dfee8e2c2aa7688d1b
+                .addData(data);
+        }
+            geo_json_afc3071e72e5f5dfee8e2c2aa7688d1b_add({"features": [{"geometry": {"coordinates": [[[-51.94653550548264, -29.46514684605622, 0.0], [-51.94504966913182, -29.4625780442531, 0.0], [-51.945835009707, -29.4619127300962, 0.0], [-51.94778783491538, -29.46475872607847, 0.0], [-51.94653550548264, -29.46514684605622, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_afc3071e72e5f5dfee8e2c2aa7688d1b.bindTooltip(
+                `<div>
+                     LCZ G: Water
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_18e0634e3374ca482e493a475459e298 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bcc32e375720fafd93d6551a024f1c56 = $(`<div id="html_bcc32e375720fafd93d6551a024f1c56" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ G</h4>                 <p><b>Descrição:</b> Water</p>                 <p><b>Área:</b> 0.052 km²</p>                              <p><b>Temperatura Média:</b> 26.1°C</p>                 <p><b>Pontos Medidos:</b> 13</p>                 </div></div>`)[0];
+                popup_18e0634e3374ca482e493a475459e298.setContent(html_bcc32e375720fafd93d6551a024f1c56);
+            
+        
+
+        geo_json_afc3071e72e5f5dfee8e2c2aa7688d1b.bindPopup(popup_18e0634e3374ca482e493a475459e298)
+        ;
+
+        
+    
+    
+            geo_json_afc3071e72e5f5dfee8e2c2aa7688d1b.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_ded859740f67b8056dbbc4436251e4d0_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#1E90FF", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_ded859740f67b8056dbbc4436251e4d0_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_ded859740f67b8056dbbc4436251e4d0 = L.geoJson(null, {
+                onEachFeature: geo_json_ded859740f67b8056dbbc4436251e4d0_onEachFeature,
+            
+                style: geo_json_ded859740f67b8056dbbc4436251e4d0_styler,
+            ...{
+}
+        });
+
+        function geo_json_ded859740f67b8056dbbc4436251e4d0_add (data) {
+            geo_json_ded859740f67b8056dbbc4436251e4d0
+                .addData(data);
+        }
+            geo_json_ded859740f67b8056dbbc4436251e4d0_add({"features": [{"geometry": {"coordinates": [[[-51.944947522658, -29.46382127797163, 0.0], [-51.939459550238, -29.45685620824012, 0.0], [-51.94181219149359, -29.45542381215028, 0.0], [-51.94704226453025, -29.46324140657683, 0.0], [-51.944947522658, -29.46382127797163, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_ded859740f67b8056dbbc4436251e4d0.bindTooltip(
+                `<div>
+                     LCZ G: Water
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_3ab26b9e82804600631c115930924235 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_10a2cc618b46cbbe9b4604007dda6eee = $(`<div id="html_10a2cc618b46cbbe9b4604007dda6eee" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ G</h4>                 <p><b>Descrição:</b> Water</p>                 <p><b>Área:</b> 0.311 km²</p>                              <p><b>Temperatura Média:</b> 26.1°C</p>                 <p><b>Pontos Medidos:</b> 13</p>                 </div></div>`)[0];
+                popup_3ab26b9e82804600631c115930924235.setContent(html_10a2cc618b46cbbe9b4604007dda6eee);
+            
+        
+
+        geo_json_ded859740f67b8056dbbc4436251e4d0.bindPopup(popup_3ab26b9e82804600631c115930924235)
+        ;
+
+        
+    
+    
+            geo_json_ded859740f67b8056dbbc4436251e4d0.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+        function geo_json_2c467cf997723261a99691f0884232cc_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "black", "fillColor": "#1E90FF", "fillOpacity": 0.6, "weight": 2};
+            }
+        }
+
+        function geo_json_2c467cf997723261a99691f0884232cc_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_2c467cf997723261a99691f0884232cc = L.geoJson(null, {
+                onEachFeature: geo_json_2c467cf997723261a99691f0884232cc_onEachFeature,
+            
+                style: geo_json_2c467cf997723261a99691f0884232cc_styler,
+            ...{
+}
+        });
+
+        function geo_json_2c467cf997723261a99691f0884232cc_add (data) {
+            geo_json_2c467cf997723261a99691f0884232cc
+                .addData(data);
+        }
+            geo_json_2c467cf997723261a99691f0884232cc_add({"features": [{"geometry": {"coordinates": [[[-51.93479102563639, -29.43262142599371, 0.0], [-51.92662951528898, -29.4369505542878, 0.0], [-51.92596759896372, -29.43547488391127, 0.0], [-51.93349789966465, -29.43154952430803, 0.0], [-51.93479102563639, -29.43262142599371, 0.0]]], "type": "Polygon"}, "id": "0", "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_2c467cf997723261a99691f0884232cc.bindTooltip(
+                `<div>
+                     LCZ G: Water
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_efd36521f61114bc9daa06fa8413e1c4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4fab83488a1e9c933307a5e95b7711c4 = $(`<div id="html_4fab83488a1e9c933307a5e95b7711c4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; font-size: 12px;">                 <h4 style="margin-bottom: 10px;">LCZ G</h4>                 <p><b>Descrição:</b> Water</p>                 <p><b>Área:</b> 0.200 km²</p>                              <p><b>Temperatura Média:</b> 26.1°C</p>                 <p><b>Pontos Medidos:</b> 13</p>                 </div></div>`)[0];
+                popup_efd36521f61114bc9daa06fa8413e1c4.setContent(html_4fab83488a1e9c933307a5e95b7711c4);
+            
+        
+
+        geo_json_2c467cf997723261a99691f0884232cc.bindPopup(popup_efd36521f61114bc9daa06fa8413e1c4)
+        ;
+
+        
+    
+    
+            geo_json_2c467cf997723261a99691f0884232cc.addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+    
+            var layer_control_ecddc26acb6f895415ab076f50fe0583_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_08ef01cf7f6059621121d5d94503bb9a,
+                    "CartoDB Positron" : tile_layer_c9da1ee5d63b72efa606c65614bbce74,
+                    "CartoDB Dark" : tile_layer_1c9512da37af375c2a33ad1031d66557,
+                },
+                overlays :  {
+                    "macro_element_f349b6025d0cfba9e0464f0bd5ea24aa" : geo_json_f349b6025d0cfba9e0464f0bd5ea24aa,
+                    "macro_element_f5a7c9190338903a7eb73424b3a1e459" : geo_json_f5a7c9190338903a7eb73424b3a1e459,
+                    "macro_element_a1d7244cb6731e9f08a3be88f7c6782e" : geo_json_a1d7244cb6731e9f08a3be88f7c6782e,
+                    "macro_element_3d987faed5f83d880cdfb074d9dbdeb1" : geo_json_3d987faed5f83d880cdfb074d9dbdeb1,
+                    "macro_element_38b97ef3cd7b3f612135f5d4c0ba7182" : geo_json_38b97ef3cd7b3f612135f5d4c0ba7182,
+                    "macro_element_3812849b9f9d80e1f4cda6c74d3491d0" : geo_json_3812849b9f9d80e1f4cda6c74d3491d0,
+                    "macro_element_b05c287f62f24d19b251042b7b5b1a74" : geo_json_b05c287f62f24d19b251042b7b5b1a74,
+                    "macro_element_bfbef688d94b360c2ea60e8ad7ca877e" : geo_json_bfbef688d94b360c2ea60e8ad7ca877e,
+                    "macro_element_7947857d0725f801a540e1c42221f299" : geo_json_7947857d0725f801a540e1c42221f299,
+                    "macro_element_d63f9a5203f2d49f82ae77d686c34494" : geo_json_d63f9a5203f2d49f82ae77d686c34494,
+                    "macro_element_0d224137d0e89753b66e395f0cf4860a" : geo_json_0d224137d0e89753b66e395f0cf4860a,
+                    "macro_element_bf3c116939437c39e5f2cf549acf3fcb" : geo_json_bf3c116939437c39e5f2cf549acf3fcb,
+                    "macro_element_e4f9e02f63d52721098ce8c37b5f26c7" : geo_json_e4f9e02f63d52721098ce8c37b5f26c7,
+                    "macro_element_ec8e2984dd19a0a33228668393c5bab1" : geo_json_ec8e2984dd19a0a33228668393c5bab1,
+                    "macro_element_478a8194a71fea4929bd783cd784120d" : geo_json_478a8194a71fea4929bd783cd784120d,
+                    "macro_element_df39bdba6148aa7c23c92a833d8ea89f" : geo_json_df39bdba6148aa7c23c92a833d8ea89f,
+                    "macro_element_61c551fe91c1cad127f6d280c92e98d9" : geo_json_61c551fe91c1cad127f6d280c92e98d9,
+                    "macro_element_b9b302291373e1dbe682fa20908fb745" : geo_json_b9b302291373e1dbe682fa20908fb745,
+                    "macro_element_2cba7170ab471c50736cf75e42a4d912" : geo_json_2cba7170ab471c50736cf75e42a4d912,
+                    "macro_element_a1ffb6e8499b6b303f52812a16cc3f7a" : geo_json_a1ffb6e8499b6b303f52812a16cc3f7a,
+                    "macro_element_55855518c28bb62b55de324216e0d2ee" : geo_json_55855518c28bb62b55de324216e0d2ee,
+                    "macro_element_8878b9b67c53975b8597a749add487aa" : geo_json_8878b9b67c53975b8597a749add487aa,
+                    "macro_element_b82882e55655389af71a9c08965ff26b" : geo_json_b82882e55655389af71a9c08965ff26b,
+                    "macro_element_1db1386f5fdc396a02f0dc664d50f5c3" : geo_json_1db1386f5fdc396a02f0dc664d50f5c3,
+                    "macro_element_8f4c1c5c5c1eff3556670945cba676cd" : geo_json_8f4c1c5c5c1eff3556670945cba676cd,
+                    "macro_element_74db8b6820afc1c38687b8f7c2972499" : geo_json_74db8b6820afc1c38687b8f7c2972499,
+                    "macro_element_a2e01bb8375247109c14ea9d08eea7ca" : geo_json_a2e01bb8375247109c14ea9d08eea7ca,
+                    "macro_element_456186ddf8786656c63d8fa8ac509a45" : geo_json_456186ddf8786656c63d8fa8ac509a45,
+                    "macro_element_ec0f0fb68b04b9b139534d68fd7bb4a7" : geo_json_ec0f0fb68b04b9b139534d68fd7bb4a7,
+                    "macro_element_a3e41fdb1a6a6d894e1f3f6f1f00d5cc" : geo_json_a3e41fdb1a6a6d894e1f3f6f1f00d5cc,
+                    "macro_element_28ca2fa660c50fb4157c44e6910461f1" : geo_json_28ca2fa660c50fb4157c44e6910461f1,
+                    "macro_element_ba03e1b49b5f251e23836566de21efbd" : geo_json_ba03e1b49b5f251e23836566de21efbd,
+                    "macro_element_abc5bebc3cbeb788961d1265d5053508" : geo_json_abc5bebc3cbeb788961d1265d5053508,
+                    "macro_element_d4054b4bf851fb9f4f9f4761d734a063" : geo_json_d4054b4bf851fb9f4f9f4761d734a063,
+                    "macro_element_6e019cfd801486963bdeda63db738e7a" : geo_json_6e019cfd801486963bdeda63db738e7a,
+                    "macro_element_32ef6a52632fdf04162c593f309ab2d8" : geo_json_32ef6a52632fdf04162c593f309ab2d8,
+                    "macro_element_40daed00db337856da66bef4e1ecdc5a" : geo_json_40daed00db337856da66bef4e1ecdc5a,
+                    "macro_element_5c4d7a59d522077ab9595adcb9e23f80" : geo_json_5c4d7a59d522077ab9595adcb9e23f80,
+                    "macro_element_81238fbc4db067594430526faa74f4bd" : geo_json_81238fbc4db067594430526faa74f4bd,
+                    "macro_element_8900fe18642b9a89408810ca35a3cd36" : geo_json_8900fe18642b9a89408810ca35a3cd36,
+                    "macro_element_79b89e5387e0e5148a2faae80643eabd" : geo_json_79b89e5387e0e5148a2faae80643eabd,
+                    "macro_element_18e4f22221d6dece65e0388f9d070ca4" : geo_json_18e4f22221d6dece65e0388f9d070ca4,
+                    "macro_element_ba6f599c0d12df172262d47e5b3c0cc0" : geo_json_ba6f599c0d12df172262d47e5b3c0cc0,
+                    "macro_element_2f87fb7eb535c1de6f38fbf83aaf3ccf" : geo_json_2f87fb7eb535c1de6f38fbf83aaf3ccf,
+                    "macro_element_8158b748a48bf912d92744d044a8c347" : geo_json_8158b748a48bf912d92744d044a8c347,
+                    "macro_element_afc3071e72e5f5dfee8e2c2aa7688d1b" : geo_json_afc3071e72e5f5dfee8e2c2aa7688d1b,
+                    "macro_element_ded859740f67b8056dbbc4436251e4d0" : geo_json_ded859740f67b8056dbbc4436251e4d0,
+                    "macro_element_2c467cf997723261a99691f0884232cc" : geo_json_2c467cf997723261a99691f0884232cc,
+                },
+            };
+            let layer_control_ecddc26acb6f895415ab076f50fe0583 = L.control.layers(
+                layer_control_ecddc26acb6f895415ab076f50fe0583_layers.base_layers,
+                layer_control_ecddc26acb6f895415ab076f50fe0583_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_39fc0ecd3a3297e7c6d616210902d331);
+        
+</script>
+</html>
