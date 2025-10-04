@@ -1,5 +1,0 @@
-scenario_id,type,from_classes,to_class,conversion_rate,area_affected_km2,temp_change,impact
-1,Urbanização,"B, D",6,30%,0.20872289111746853,0.43675000000000136,Aquecimento
-2,Urbanização,"A, B, D",2,50%,0.5629498069909544,2.115277777777779,Aquecimento
-3,Revegetação,"6, 9",B,20%,0.06182702580066357,-0.3137272727272731,Resfriamento
-4,Revegetação,"2, 3, 6",A,40%,0.12124537738065384,-1.5120000000000005,Resfriamento

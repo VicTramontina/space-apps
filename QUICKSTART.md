@@ -1,184 +1,85 @@
-# 🚀 Guia de Início Rápido
+# 🚀 Guia Rápido de Início
 
-## 1️⃣ Instalação Rápida (5 minutos)
-
-### Passo 1: Clonar o Repositório
+## Passo 1: Instalar Python
+Certifique-se de ter Python 3.8 ou superior instalado:
 ```bash
-cd space-apps
+python --version
 ```
 
-### Passo 2: Instalar Dependências
+## Passo 2: Instalar Dependências
 ```bash
 pip install -r requirements.txt
 ```
 
-### Passo 3: Executar em Modo Demo
+## Passo 3: Configurar API Meteomatics
+
+1. Acesse: https://www.meteomatics.com/
+2. Crie uma conta (há opção de teste gratuito)
+3. Copie suas credenciais
+
+4. Crie o arquivo `.env` na raiz do projeto:
 ```bash
-python main.py --skip-api
+cp .env.example .env
 ```
 
-**Pronto!** 🎉 Os resultados estarão em `output/`
+5. Edite `.env` e adicione suas credenciais:
+```
+METEOMATICS_USERNAME=seu_usuario_aqui
+METEOMATICS_PASSWORD=sua_senha_aqui
+```
 
----
-
-## 2️⃣ Usando com API Real (Recomendado)
-
-### Passo 1: Obter Credenciais Meteomatics
-
-1. Acesse: https://www.meteomatics.com/en/sign-up-weather-api-test-account/
-2. Preencha o formulário
-3. Receba credenciais por email (username e password)
-
-### Passo 2: Configurar Credenciais
-
-**Opção A: Variáveis de Ambiente (Linux/Mac)**
+## Passo 4: Executar a Aplicação
 ```bash
-export METEOMATICS_USERNAME="seu_usuario"
-export METEOMATICS_PASSWORD="sua_senha"
-python main.py
+python app.py
 ```
 
-**Opção B: Variáveis de Ambiente (Windows)**
-```cmd
-set METEOMATICS_USERNAME=seu_usuario
-set METEOMATICS_PASSWORD=sua_senha
-python main.py
-```
+## Passo 5: Abrir no Navegador
+Acesse: http://localhost:5000
 
-**Opção C: Linha de Comando**
+## 🎯 Primeiros Passos na Interface
+
+1. **Visualizar o Mapa**: O mapa de Lajeado-RS carregará automaticamente com as zonas LCZ coloridas
+
+2. **Ver Temperaturas**: Clique no botão "📊 Carregar Camada de Temperatura"
+   - Isso pode levar alguns segundos
+   - Pontos coloridos aparecerão mostrando a temperatura
+
+3. **Selecionar uma Zona**: Clique em qualquer área colorida no mapa
+   - A zona será destacada em amarelo
+   - Informações aparecerão na barra lateral
+
+4. **Simular uma Mudança**:
+   - No dropdown "Selecione uma nova LCZ", escolha um tipo diferente
+   - Clique em "🔄 Calcular Cenário"
+   - Veja o impacto na temperatura!
+
+## 💡 Exemplo de Uso
+
+**Cenário**: "O que aconteceria se transformássemos uma área industrial em um parque?"
+
+1. Clique em uma zona LCZ 10 (Heavy Industry) - laranja escuro
+2. Veja a temperatura atual (ex: 32°C)
+3. Selecione "LCZ 11 - Dense Trees"
+4. Clique em "Calcular Cenário"
+5. **Resultado**: Temperatura cairia para ~27.9°C (redução de -4.1°C!)
+
+## ⚠️ Solução de Problemas
+
+### Erro: "Unable to fetch temperature data"
+- Verifique se as credenciais da Meteomatics estão corretas no arquivo `.env`
+- Certifique-se de que sua conta Meteomatics está ativa
+
+### Mapa não carrega
+- Verifique se o arquivo KMZ está em `lajeado-result/21025c4c602c6ebc89232bf384a56fac185220af.kmz`
+- Veja os logs no terminal para mais detalhes
+
+### Erro de dependências
 ```bash
-python main.py --username seu_usuario --password sua_senha
+pip install --upgrade -r requirements.txt
 ```
 
----
+## 📖 Próximos Passos
 
-## 3️⃣ Visualizar Resultados
-
-### Mapa Interativo
-Abra no navegador:
-```
-output/lcz_map.html
-```
-
-### Gráficos
-- `output/temperature_by_lcz.png` - Temperatura por zona
-- `output/temperature_delta.png` - Comparação com valores esperados
-- `output/scenario_example.png` - Exemplo de cenário
-
-### Dados
-- `output/temperature_data.csv` - Dados brutos
-- `output/lcz_statistics.csv` - Estatísticas por LCZ
-- `output/relatorio.txt` - Relatório completo
-
----
-
-## 4️⃣ Testar com Seus Próprios Dados
-
-```bash
-python main.py --kml seu_arquivo.kml --output-dir meus_resultados
-```
-
-**Requisitos do arquivo KML:**
-- Polígonos com classe LCZ no campo "Name" (ex: "2", "A", "G")
-- Sistema de coordenadas WGS84
-- Estrutura compatível com Google Earth
-
----
-
-## 5️⃣ Resolução de Problemas
-
-### Erro: "Arquivo KML não encontrado"
-```bash
-# Verificar caminho do arquivo
-ls lajeado-result/data/*.kml
-
-# Usar caminho absoluto
-python main.py --kml /caminho/completo/arquivo.kml
-```
-
-### Erro: "Credenciais inválidas"
-```bash
-# Testar em modo simulado primeiro
-python main.py --skip-api
-
-# Verificar variáveis de ambiente
-echo $METEOMATICS_USERNAME
-```
-
-### Erro: "ModuleNotFoundError"
-```bash
-# Reinstalar dependências
-pip install -r requirements.txt --upgrade
-```
-
-### Erro: "KML driver not available"
-```bash
-# Instalar GDAL (se necessário)
-# Ubuntu/Debian:
-sudo apt-get install gdal-bin libgdal-dev
-
-# Mac:
-brew install gdal
-
-# Windows: baixar de https://www.gisinternals.com/
-```
-
----
-
-## 6️⃣ Exemplos de Uso
-
-### Exemplo 1: Análise Básica
-```bash
-python main.py --skip-api
-```
-
-### Exemplo 2: Análise com API
-```bash
-export METEOMATICS_USERNAME="user123"
-export METEOMATICS_PASSWORD="pass456"
-python main.py
-```
-
-### Exemplo 3: Arquivo KML Customizado
-```bash
-python main.py \
-  --kml dados/minha_cidade.kml \
-  --output-dir resultados/minha_cidade \
-  --skip-api
-```
-
----
-
-## 7️⃣ Próximos Passos
-
-Após executar com sucesso:
-
-1. 📊 **Explore os dados** em `output/lcz_statistics.csv`
-2. 🗺️ **Visualize o mapa** em `output/lcz_map.html`
-3. 🔮 **Analise cenários** em `output/scenarios_comparison.csv`
-4. 📄 **Leia o relatório** em `output/relatorio.txt`
-
-### Aprofundar-se no Código
-
-```python
-# Experimentar com código Python
-from lcz_processor import LCZProcessor
-from visualizer import Visualizer
-
-processor = LCZProcessor('lajeado-result/data/*.kml')
-print(processor.gdf[['lcz_class', 'lcz_description', 'area_km2']])
-```
-
----
-
-## ❓ Precisa de Ajuda?
-
-- 📖 Documentação completa: [`README.md`](README.md)
-- 🐛 Reportar problema: Abra uma issue
-- 💡 Sugestões: Pull requests são bem-vindos!
-
----
-
-**Tempo estimado:** 5-10 minutos ⏱️
-
-**Dificuldade:** Iniciante 🟢
+- Leia o [README.md](README.md) completo para entender a metodologia
+- Explore diferentes cenários de conversão de LCZ
+- Veja a [documentação de referência](README.md#-referências-científicas)

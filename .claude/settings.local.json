@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:www.meteomatics.com)",
+      "WebFetch(domain:journals.ametsoc.org)",
+      "Bash(python:*)",
+      "Bash(where python)",
+      "Bash(C:UsersvictoAppDataLocalMicrosoftWindowsAppspython.exe --version)",
+      "Bash(py --version)",
+      "WebFetch(domain:www.researchgate.net)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

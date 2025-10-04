@@ -1,13 +1,11 @@
 """
-LCZ KMZ File Processor
+LCZ KMZ File Processor (Simplified - no GeoPandas dependency)
 Handles extraction and processing of Local Climate Zone data from KMZ files
 """
 import zipfile
 import os
 import xml.etree.ElementTree as ET
-from shapely.geometry import Polygon, MultiPolygon, Point
-from shapely import wkt
-import geopandas as gpd
+from shapely.geometry import Polygon, MultiPolygon, Point, mapping, shape
 import json
 
 
@@ -16,7 +14,7 @@ class LCZProcessor:
 
     def __init__(self, kmz_path):
         self.kmz_path = kmz_path
-        self.gdf = None
+        self.features = []
 
     def extract_kmz(self, output_dir='temp_kmz'):
         """Extract KMZ file contents"""
@@ -42,7 +40,7 @@ class LCZProcessor:
         # KML namespace
         ns = {'kml': 'http://www.opengis.net/kml/2.2'}
 
-        features = []
+        self.features = []
 
         # Find all Placemarks
         for placemark in root.findall('.//kml:Placemark', ns):
@@ -74,17 +72,16 @@ class LCZProcessor:
                     geometry = MultiPolygon(polygons) if len(polygons) > 1 else polygons[0]
 
             if geometry:
-                features.append({
-                    'geometry': geometry,
-                    'lcz_class': lcz_class,
-                    'name': name
+                self.features.append({
+                    'type': 'Feature',
+                    'geometry': mapping(geometry),
+                    'properties': {
+                        'lcz_class': lcz_class,
+                        'name': name
+                    }
                 })
 
-        # Create GeoDataFrame
-        if features:
-            self.gdf = gpd.GeoDataFrame(features, crs='EPSG:4326')
-
-        return self.gdf
+        return self.features
 
     def _parse_coordinates(self, coord_string):
         """Parse KML coordinate string to list of tuples"""
@@ -110,14 +107,28 @@ class LCZProcessor:
         kml_path = self.extract_kmz()
         if kml_path:
             self.parse_kml(kml_path)
-        return self.gdf
+        return self.features
 
     def get_bounds(self):
         """Get bounding box of all LCZ zones"""
-        if self.gdf is not None:
-            bounds = self.gdf.total_bounds  # [minx, miny, maxx, maxy]
-            return bounds
-        return None
+        if not self.features:
+            return None
+
+        all_coords = []
+        for feature in self.features:
+            geom = shape(feature['geometry'])
+            bounds = geom.bounds  # (minx, miny, maxx, maxy)
+            all_coords.append(bounds)
+
+        if not all_coords:
+            return None
+
+        min_lon = min(b[0] for b in all_coords)
+        min_lat = min(b[1] for b in all_coords)
+        max_lon = max(b[2] for b in all_coords)
+        max_lat = max(b[3] for b in all_coords)
+
+        return [min_lon, min_lat, max_lon, max_lat]
 
     def get_center(self):
         """Get center point of all zones"""
@@ -129,7 +140,10 @@ class LCZProcessor:
         return None
 
     def to_geojson(self):
-        """Convert GeoDataFrame to GeoJSON"""
-        if self.gdf is not None:
-            return json.loads(self.gdf.to_json())
+        """Convert features to GeoJSON"""
+        if self.features:
+            return {
+                'type': 'FeatureCollection',
+                'features': self.features
+            }
         return None

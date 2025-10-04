@@ -1,242 +1,192 @@
 """
-Módulo para coleta de dados de temperatura da API Meteomatics
+Meteomatics API Integration
+Fetches surface temperature data for LCZ analysis
 """
 import requests
-from datetime import datetime, timedelta, timezone
-import pandas as pd
-from typing import List, Tuple, Dict
-import logging
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+from datetime import datetime, timedelta
+import numpy as np
+from config import METEOMATICS_USERNAME, METEOMATICS_PASSWORD, METEOMATICS_API_BASE
 
 
 class MeteomaticsAPI:
-    """Cliente para API Meteomatics"""
+    """Interface for Meteomatics Weather API"""
 
-    BASE_URL = "https://api.meteomatics.com"
+    def __init__(self, username=None, password=None):
+        self.username = username or METEOMATICS_USERNAME
+        self.password = password or METEOMATICS_PASSWORD
+        self.base_url = METEOMATICS_API_BASE
 
-    def __init__(self, username: str, password: str):
+    def get_temperature_grid(self, lat_min, lat_max, lon_min, lon_max, resolution=0.01, datetime_str=None):
         """
-        Inicializa cliente da API
+        Get temperature data for a grid area by sampling multiple points
 
         Args:
-            username: Nome de usuário da API Meteomatics
-            password: Senha da API Meteomatics
-        """
-        self.username = username
-        self.password = password
-        self.auth = (username, password)
-
-    def get_temperature_grid(
-        self,
-        lat_min: float,
-        lat_max: float,
-        lon_min: float,
-        lon_max: float,
-        resolution: float = 0.005,
-        start_time: datetime = None,
-        end_time: datetime = None,
-        time_step: str = "1H"
-    ) -> pd.DataFrame:
-        """
-        Obtém dados de temperatura em grid para área especificada
-
-        Args:
-            lat_min: Latitude mínima
-            lat_max: Latitude máxima
-            lon_min: Longitude mínima
-            lon_max: Longitude máxima
-            resolution: Resolução do grid em graus (default: 0.005 = ~500m)
-            start_time: Tempo inicial (default: 24h atrás)
-            end_time: Tempo final (default: agora)
-            time_step: Intervalo de tempo (default: 1H)
+            lat_min, lat_max, lon_min, lon_max: Bounding box coordinates
+            resolution: Grid resolution in degrees (default 0.01 = ~1km)
+            datetime_str: ISO format datetime (default: current time)
 
         Returns:
-            DataFrame com colunas: lat, lon, timestamp, temperature
+            dict: Temperature data with coordinates
         """
-        if start_time is None:
-            now = datetime.now(timezone.utc)
-            start_time = now - timedelta(hours=24)
-        if end_time is None:
-            end_time = datetime.now(timezone.utc)
+        if datetime_str is None:
+            datetime_str = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
 
-        # Formato de data ISO para API
-        start_str = start_time.strftime("%Y-%m-%dT%H:%M:%SZ")
-        end_str = end_time.strftime("%Y-%m-%dT%H:%M:%SZ")
+        # Use 2m temperature as proxy for surface conditions
+        parameter = 't_2m:C'
 
-        # Parâmetro de temperatura a 2m em Celsius
-        parameter = "t_2m:C"
+        # Create grid coordinates
+        lats = np.arange(lat_min, lat_max, resolution)
+        lons = np.arange(lon_min, lon_max, resolution)
 
-        # Construir URL para grid
-        # Formato: lat_min,lon_min_lat_max,lon_max:resolution
-        location = f"{lat_min},{lon_min}_{lat_max},{lon_max}:{resolution}"
+        # Limit number of points to avoid too many requests
+        max_points = 100
+        total_points = len(lats) * len(lons)
 
-        # Formato de tempo com intervalo
-        time_range = f"{start_str}--{end_str}:PT{time_step}"
+        if total_points > max_points:
+            # Sample fewer points
+            lat_step = max(1, len(lats) // 10)
+            lon_step = max(1, len(lons) // 10)
+            lats = lats[::lat_step]
+            lons = lons[::lon_step]
 
-        url = f"{self.BASE_URL}/{time_range}/{parameter}/{location}/json"
+        # Create list of coordinate pairs for multi-point query
+        coords_list = []
+        for lat in lats:
+            for lon in lons:
+                coords_list.append(f"{lat},{lon}")
 
-        logger.info(f"Consultando API Meteomatics: {url}")
+        # Meteomatics supports multiple locations separated by '+'
+        # Limit to 50 points per request
+        locations = '+'.join(coords_list[:50])
+
+        # Build URL
+        url = f"{self.base_url}/{datetime_str}/{parameter}/{locations}/json"
 
         try:
-            response = requests.get(url, auth=self.auth, timeout=30)
+            response = requests.get(
+                url,
+                auth=(self.username, self.password),
+                timeout=30
+            )
             response.raise_for_status()
 
             data = response.json()
-
-            # Processar resposta em DataFrame
-            records = []
-            for entry in data.get('data', []):
-                for coord in entry.get('coordinates', []):
-                    for value in coord.get('dates', []):
-                        records.append({
-                            'lat': coord['lat'],
-                            'lon': coord['lon'],
-                            'timestamp': value['date'],
-                            'temperature': value['value']
-                        })
-
-            df = pd.DataFrame(records)
-            logger.info(f"Coletados {len(df)} registros de temperatura")
-            return df
+            return self._parse_grid_response(data)
 
         except requests.exceptions.RequestException as e:
-            logger.error(f"Erro ao consultar API: {e}")
-            raise
+            print(f"Error fetching temperature data: {e}")
+            if hasattr(e.response, 'text'):
+                print(f"Response: {e.response.text}")
+            return None
 
-    def get_temperature_points(
-        self,
-        points: List[Tuple[float, float]],
-        timestamp: datetime = None
-    ) -> pd.DataFrame:
+    def get_temperature_point(self, lat, lon, datetime_str=None):
         """
-        Obtém temperatura para lista de pontos específicos
+        Get temperature at a specific point
 
         Args:
-            points: Lista de tuplas (lat, lon)
-            timestamp: Data/hora para consulta (default: agora)
+            lat, lon: Coordinates
+            datetime_str: ISO format datetime (default: current time)
 
         Returns:
-            DataFrame com colunas: lat, lon, temperature
+            float: Temperature in Celsius
         """
-        if timestamp is None:
-            timestamp = datetime.now(timezone.utc)
+        if datetime_str is None:
+            datetime_str = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
 
-        time_str = timestamp.strftime("%Y-%m-%dT%H:%M:%SZ")
-        parameter = "t_2m:C"
-
-        results = []
-
-        # API Meteomatics permite múltiplos pontos separados por +
-        # Mas para simplificar, vamos fazer requisições individuais
-        for lat, lon in points:
-            location = f"{lat},{lon}"
-            url = f"{self.BASE_URL}/{time_str}/{parameter}/{location}/json"
-
-            try:
-                response = requests.get(url, auth=self.auth, timeout=30)
-                response.raise_for_status()
-
-                data = response.json()
-                temp = data['data'][0]['coordinates'][0]['dates'][0]['value']
-
-                results.append({
-                    'lat': lat,
-                    'lon': lon,
-                    'temperature': temp
-                })
-
-            except requests.exceptions.RequestException as e:
-                logger.warning(f"Erro ao obter temperatura para ({lat}, {lon}): {e}")
-                results.append({
-                    'lat': lat,
-                    'lon': lon,
-                    'temperature': None
-                })
-
-        return pd.DataFrame(results)
-
-    def get_temperature_timeseries(
-        self,
-        lat: float,
-        lon: float,
-        start_time: datetime = None,
-        end_time: datetime = None,
-        time_step: str = "1H"
-    ) -> pd.DataFrame:
-        """
-        Obtém série temporal de temperatura para um ponto
-
-        Args:
-            lat: Latitude
-            lon: Longitude
-            start_time: Tempo inicial (default: 7 dias atrás)
-            end_time: Tempo final (default: agora)
-            time_step: Intervalo de tempo (default: 1H)
-
-        Returns:
-            DataFrame com colunas: timestamp, temperature
-        """
-        if start_time is None:
-            now = datetime.now(timezone.utc)
-            start_time = now - timedelta(days=7)
-        if end_time is None:
-            end_time = datetime.now(timezone.utc)
-
-        start_str = start_time.strftime("%Y-%m-%dT%H:%M:%SZ")
-        end_str = end_time.strftime("%Y-%m-%dT%H:%M:%SZ")
-
-        parameter = "t_2m:C"
+        parameter = 't_2m:C'
         location = f"{lat},{lon}"
-        time_range = f"{start_str}--{end_str}:PT{time_step}"
 
-        url = f"{self.BASE_URL}/{time_range}/{parameter}/{location}/json"
-
-        logger.info(f"Consultando série temporal: {url}")
+        url = f"{self.base_url}/{datetime_str}/{parameter}/{location}/json"
 
         try:
-            response = requests.get(url, auth=self.auth, timeout=30)
+            response = requests.get(
+                url,
+                auth=(self.username, self.password),
+                timeout=30
+            )
             response.raise_for_status()
 
             data = response.json()
-
-            records = []
-            for value in data['data'][0]['coordinates'][0]['dates']:
-                records.append({
-                    'timestamp': value['date'],
-                    'temperature': value['value']
-                })
-
-            df = pd.DataFrame(records)
-            df['timestamp'] = pd.to_datetime(df['timestamp'])
-
-            logger.info(f"Coletados {len(df)} pontos na série temporal")
-            return df
+            if data and 'data' in data and len(data['data']) > 0:
+                coordinates = data['data'][0]['coordinates']
+                if len(coordinates) > 0:
+                    return coordinates[0]['dates'][0]['value']
 
         except requests.exceptions.RequestException as e:
-            logger.error(f"Erro ao consultar API: {e}")
-            raise
+            print(f"Error fetching temperature data: {e}")
 
+        return None
 
-if __name__ == "__main__":
-    # Exemplo de uso (requer credenciais válidas)
-    import os
+    def get_temperature_time_series(self, lat, lon, start_date, end_date, interval='PT1H'):
+        """
+        Get temperature time series for a location
 
-    username = os.getenv("METEOMATICS_USERNAME", "your_username")
-    password = os.getenv("METEOMATICS_PASSWORD", "your_password")
+        Args:
+            lat, lon: Coordinates
+            start_date, end_date: ISO format datetime strings
+            interval: Time interval (default PT1H = 1 hour)
 
-    api = MeteomaticsAPI(username, password)
+        Returns:
+            list: Temperature time series data
+        """
+        parameter = 't_2m:C'
+        location = f"{lat},{lon}"
+        time_range = f"{start_date}--{end_date}:{interval}"
 
-    # Coordenadas de Lajeado-RS
-    lajeado_lat = -29.4658
-    lajeado_lon = -51.9592
+        url = f"{self.base_url}/{time_range}/{parameter}/{location}/json"
 
-    # Bounding box para Lajeado (aproximado)
-    lat_min, lat_max = -29.48, -29.42
-    lon_min, lon_max = -52.03, -51.92
+        try:
+            response = requests.get(
+                url,
+                auth=(self.username, self.password),
+                timeout=30
+            )
+            response.raise_for_status()
 
-    print("Testando API Meteomatics...")
-    print(f"Para usar, configure as variáveis de ambiente:")
-    print(f"  METEOMATICS_USERNAME=seu_usuario")
-    print(f"  METEOMATICS_PASSWORD=sua_senha")
+            data = response.json()
+            return self._parse_timeseries_response(data)
+
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching time series data: {e}")
+            return None
+
+    def _parse_grid_response(self, data):
+        """Parse grid response from Meteomatics API"""
+        if not data or 'data' not in data:
+            return None
+
+        result = {
+            'coordinates': [],
+            'values': []
+        }
+
+        for item in data['data']:
+            parameter = item.get('parameter', '')
+            for coord in item.get('coordinates', []):
+                lat = coord.get('lat')
+                lon = coord.get('lon')
+                dates = coord.get('dates', [])
+
+                if dates and len(dates) > 0:
+                    value = dates[0].get('value')
+                    result['coordinates'].append({'lat': lat, 'lon': lon})
+                    result['values'].append(value)
+
+        return result
+
+    def _parse_timeseries_response(self, data):
+        """Parse time series response from Meteomatics API"""
+        if not data or 'data' not in data:
+            return None
+
+        result = []
+
+        for item in data['data']:
+            for coord in item.get('coordinates', []):
+                for date_entry in coord.get('dates', []):
+                    result.append({
+                        'date': date_entry.get('date'),
+                        'value': date_entry.get('value')
+                    })
+
+        return result

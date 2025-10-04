@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCZ Temperature Analysis - Lajeado, RS</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        #map {
+            flex: 1;
+            height: 100%;
+        }
+
+        #sidebar {
+            width: 350px;
+            background: #fff;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #555;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .control-section {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+
+        .legend {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border: 1px solid #333;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #007bff;
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .info-value {
+            font-size: 18px;
+            color: #333;
+            margin-top: 5px;
+        }
+
+        .scenario-result {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+
+        .scenario-result.negative {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 10px;
+            color: #007bff;
+        }
+
+        .temp-display {
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            color: #ff6b35;
+            margin: 10px 0;
+        }
+
+        .instructions {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app-container">
+        <div id="map"></div>
+        <div id="sidebar">
+            <h1>🌡️ Análise de Temperatura LCZ</h1>
+            <p style="font-size: 12px; color: #666; margin-bottom: 15px;">
+                Lajeado, Rio Grande do Sul
+            </p>
+
+            <div class="instructions">
+                <strong>Instruções:</strong>
+                <ol style="margin-left: 20px; margin-top: 5px;">
+                    <li>Clique em uma zona LCZ no mapa</li>
+                    <li>Escolha uma nova LCZ para simular</li>
+                    <li>Veja o impacto na temperatura</li>
+                </ol>
+            </div>
+
+            <div class="control-section">
+                <button class="btn" onclick="loadTemperatureLayer()">
+                    📊 Carregar Camada de Temperatura
+                </button>
+                <button class="btn btn-secondary" onclick="toggleLegend()">
+                    🎨 Mostrar/Ocultar Legenda
+                </button>
+            </div>
+
+            <div id="selected-zone-info" style="display:none;">
+                <h2>Zona Selecionada</h2>
+                <div class="info-box">
+                    <div class="info-label">LCZ Atual</div>
+                    <div class="info-value" id="current-lcz">-</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-label">Temperatura Atual</div>
+                    <div class="temp-display" id="current-temp">-- °C</div>
+                </div>
+
+                <h2>Simular Mudança de LCZ</h2>
+                <select id="new-lcz-select">
+                    <option value="">Selecione uma nova LCZ...</option>
+                </select>
+                <button class="btn" onclick="calculateScenario()">
+                    🔄 Calcular Cenário
+                </button>
+
+                <div id="scenario-result" style="display:none;"></div>
+            </div>
+
+            <div id="legend-container" style="display:none; margin-top: 20px;">
+                <h2>Legenda LCZ</h2>
+                <div id="legend" class="legend"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

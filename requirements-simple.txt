@@ -1,8 +1,7 @@
+# Versão MÍNIMA - apenas pacotes puros Python
 Flask==3.0.0
 folium==0.15.1
-geopandas==0.14.2
-shapely==2.0.2
-requests==2.32.4
+requests==2.31.0
 numpy==1.26.3
 pandas==2.1.4
 python-dotenv==1.0.0
